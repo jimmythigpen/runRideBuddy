@@ -6,17 +6,15 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('home', {path: '/'});
+  this.route('home', {path: '/'}, function() {
+    this.route('account');
+    this.route('activity', {path: '/activity/:activity_id'});
+    this.route('create');
+  });
 
   this.route('login');
 
   this.route('register');
-
-  this.route('account');
-
-  this.route('activity', {path: '/activity/:activity_id'});
-
-  this.route('create');
 });
 
 export default Router;

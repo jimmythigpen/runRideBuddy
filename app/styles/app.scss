@@ -1,0 +1,26 @@
+@import 'bower_components/bourbon/app/assets/stylesheets/bourbon';
+@import 'bower_components/neat/app/assets/stylesheets/neat';
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: #7c9431;
+  width: 100%;
+
+  h2 {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  button {
+    display: inline-block;
+  }
+
+  span {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+  }
+}

@@ -1,1 +1,17 @@
+<header>
+
+<h2>Hello, Jimmy</h2>
+
+<span>
+  {{#link-to 'home.account'}}
+    <button> Account <i class="fa fa-user"></i></button>
+  {{/link-to}}
+
+  {{#link-to 'login'}}
+    <button> Logout <i class="fa fa-sign-out"></i></button>
+  {{/link-to}}
+</span>
+
+</header>
+
 {{outlet}}

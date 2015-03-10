@@ -1,1 +1,12 @@
+<h3>Login Page</h3>
+
+{{input placeholder="email" value=loginEmail}}
+{{input placeholder="password" value=loginPassword}}
+
+<button {{action "login"}}> Login </button>
+
+{{#link-to 'register'}}
+<p>Need an account?</p>
+{{/link-to}}
+
 {{outlet}}
