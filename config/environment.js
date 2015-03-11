@@ -19,6 +19,7 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
+      'report-uri': "'http://localhost:4200'",
       'default-src': "'none'",
       'script-src': "'self'",
       'font-src': "'self' *",
