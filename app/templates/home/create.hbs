@@ -1,1 +1,54 @@
+<div class="home-container"></div>
+
+<div class="home-left-container">
+  <h2>Create New</h2>
+  <form>
+    <div>
+      <div>name</div>
+      {{input placeholder="Name Activity" value=activityName}}
+    </div>
+    <div>
+      <div>Select Date and Time</div>
+      {{input type="datetime-local" value=activityDate}}
+    </div>
+      <div>
+        <div>Select Type</div>
+        <div class="mx-button">
+            {{input type="radio" name="type" id="type1"}}
+            <label for="type1" unselectable>Run</label>
+        </div>
+        <div class="mx-button">
+            {{input type="radio" name="type" id="type2"}}
+            <label for="type2" unselectable>Ride</label>
+        </div>
+      </div>
+      <div>
+        <div>Select Style</div>
+        <div class="mx-button">
+            {{input type="radio" name="style" id="style1"}}
+            <label for="style1" unselectable>One-Way</label>
+        </div>
+        <div class="mx-button">
+            {{input type="radio" name="style" id="style2"}}
+            <label for="style2" unselectable>Round-Trip</label>
+        </div>
+      </div>
+      <div>Select Way-Points</div>
+        <div>
+          {{view "select" content=startMarker prompt="Select Start Mile Marker"}}
+        </div>
+        <div>
+          {{view "select" content=finishMarker prompt="Select Finish Mile Marker"}}
+        </div>
+
+  </form>
+
+</div>
+
+
+<div class="home-right-container">
+  <span>Explore Mile Markers!</span>
+  <div class="map-container"><iframe frameBorder='0'src='http://goo.gl/dsKbDE'></iframe></div>
+  </div>
+
 {{outlet}}
