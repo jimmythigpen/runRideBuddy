@@ -1,3 +1,20 @@
-{{nav-bar}}
+<header>
+
+<span class="header-welcome">Hello, Jimmy!</span>
+
+<span class="header-image"><i class="fa fa-bicycle"></i></span>
+
+<span class="header-buttons">
+  {{#link-to 'home.account'}}
+    <span>Account <i class="fa fa-user"></i></span>
+  {{/link-to}}
+  {{#link-to 'login'}}
+  <span>Logout <i class="fa fa-sign-out"></i></span>
+  {{/link-to}}
+</span>
+
+</header>
+
+<!-- <iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v4/jimmythigpen.le4c3j8b/attribution,zoompan,zoomwheel,geocoder,share.html?access_token=pk.eyJ1IjoiamltbXl0aGlncGVuIiwiYSI6IjRvWTlpdXMifQ.UjhhyUIJj1inLZgxVfDbTw'></iframe> -->
 
 {{outlet}}
