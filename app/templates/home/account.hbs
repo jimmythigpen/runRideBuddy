@@ -1,3 +1,9 @@
 <h3>Account Page</h3>
 
+<div>Update Your Account</div>
+  {{input placeholder="Update Name" value=updateName}}
+  {{input placeholder="Update Email" value=updateEmail}}
+  {{input placeholder="Update Password" value=updatePassword}}
+  <button {{action "updateAccount"}}>Update Account</button>
+
 {{outlet}}

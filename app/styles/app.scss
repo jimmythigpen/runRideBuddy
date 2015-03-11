@@ -42,31 +42,53 @@ header {
   display: inline-block;
 }
 
-.home-container {
+.body-container {
   @include outer-container();
 }
 
-.home-left-container {
+.left-container {
   @include span-columns(6, block-collapse);
   padding: 10px;
 }
 
-.home-right-container {
+.right-container {
   @include span-columns(6, block-collapse);
   padding: 10px;
-
 }
 
 iframe {
   width: 100%;
-  height: 550px;
+  height: 100%
+
 }
 
 .map-container {
   border-radius: 5px;
   box-shadow: 0 0 0 1px #C5E5C7;
   padding: 2px;
+  height: 550px;
 }
+
+.user-activity-container {
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px #C5E5C7;
+  padding: 10px;
+  height: 550px;
+}
+
+.activity-list {
+
+}
+
+.activity-list-item {
+  list-style: none;
+  border-radius: 5px;
+  border: 1px solid #C5E5C7;
+  margin-bottom: 5px;
+}
+
+
+
 
 //
 // CSS For Form Buttons

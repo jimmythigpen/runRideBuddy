@@ -1,10 +1,10 @@
-<div class="home-container"></div>
+<div class="body-container"></div>
 
-<div class="home-left-container">
+<div class="left-container">
   <h2>Create New</h2>
   <form>
     <div>
-      <div>name</div>
+      <div>Name your activity</div>
       {{input placeholder="Name Activity" value=activityName}}
     </div>
     <div>
@@ -25,8 +25,8 @@
       <div>
         <div>Select Style</div>
         <div class="mx-button">
-            {{input type="radio" name="style" id="style1"}}
-            <label for="style1" unselectable>One-Way</label>
+          {{input type="radio" name="style" id="style1"}}
+          <label for="style1" unselectable>One-Way</label>
         </div>
         <div class="mx-button">
             {{input type="radio" name="style" id="style2"}}
@@ -35,18 +35,33 @@
       </div>
       <div>Select Way-Points</div>
         <div>
-          {{view "select" content=startMarker prompt="Select Start Mile Marker"}}
+        {{view "select" content=startMarker prompt="Select Start Mile Marker"}}
         </div>
         <div>
-          {{view "select" content=finishMarker prompt="Select Finish Mile Marker"}}
+        {{view "select" content=finishMarker prompt="Select Finish Mile Marker"}}
         </div>
+        <div>
+          <div>Friends</div>
+          {{input type="text" placeholder="Search by name of email" value=searchFriends}}
+          <button {{action "addFriend"}}>Add Friend</button>
+        </div>
+        <div>Notes</div>
+        {{textarea placeholder="Notes" value=activityNotes}}
+        {{#link-to 'home'}}
+          <button {{action "saveNew"}}>Save</button>
+        {{/link-to}}
+        {{#link-to 'home'}}
+          <button>Cancel</button>
+        {{/link-to}}
+
+
 
   </form>
 
 </div>
 
 
-<div class="home-right-container">
+<div class="right-container">
   <span>Explore Mile Markers!</span>
   <div class="map-container"><iframe frameBorder='0'src='http://goo.gl/dsKbDE'></iframe></div>
   </div>
