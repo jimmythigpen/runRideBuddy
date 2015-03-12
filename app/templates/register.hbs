@@ -1,9 +1,14 @@
 <h3>Register Page</h3>
 
-{{input placeholder="name" value=registerName}}
-{{input placeholder="email" value=registerEmail}}
-{{input placeholder="password" value=registerPassword}}
+<form {{action 'register' on='submit'}}>
 
-<button {{action "register"}}> Register </button>
+{{input placeholder="First Name" value=firstName}}
+{{input placeholder="Last Name" value=lastName}}
+{{input placeholder="email" type='email' value=username}}
+{{input placeholder="password" type='password' value=password}}
+
+<button type="submit"> Register </button>
+
+</form>
 
 {{outlet}}

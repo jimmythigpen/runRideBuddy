@@ -12,6 +12,7 @@ export default Base.extend({
 
   authenticate: function(credentials) {
     var token = credentials.sessionToken;
+    if(token){ this.set('sessionToken', token); }
     var endpoint = token ? 'users/me' : 'login';
     var options = token ? {} : {
       data: {
