@@ -1,12 +1,16 @@
-<h3>Login Page</h3>
+<div class='login-container'>
 
-{{input placeholder="email" value=loginEmail}}
-{{input placeholder="password" value=loginPassword}}
+<div class="login-label">Run & Ride</div>
 
-<button {{action "login"}}> Login </button>
+<div>{{input placeholder="email" class="login-input" value=loginEmail}}</div>
+<div>{{input placeholder="password" class="login-input" value=loginPassword}}</div>
+
+<button class="login-button" {{action "login"}}>LOGIN</button>
 
 {{#link-to 'register'}}
-<p>Need an account?</p>
+<div class="register-link">Need an account?</div>
 {{/link-to}}
+
+</div>
 
 {{outlet}}

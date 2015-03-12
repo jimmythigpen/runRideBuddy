@@ -1,3 +1,24 @@
 <h3>Activity Page</h3>
 
 {{outlet}}
+
+<div>Name</div>
+{{model.activityName}}
+<div>Date</div>
+{{model.activityDate.iso}}
+<div>Type</div>
+{{model.activityType}}
+<div>Way-Points</div>
+Start: {{model.activityStartMarker}} Finish: {{model.activityFinishMarker}}
+<div>Friends</div>
+{{model.activityFriends}}
+<div>Notes</div>
+{{model.activityNotes}}
+
+<div>
+<button {{action "updateAccount"}}>Edit</button>
+<button {{action "updateAccount"}}>Save</button>
+<button {{action "updateAccount"}}>Delete</button>
+<button {{action "updateAccount"}}>Cancel</button>
+<button {{action "updateAccount"}}>Leave Activity</button>
+</div>

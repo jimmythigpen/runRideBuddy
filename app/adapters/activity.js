@@ -16,7 +16,7 @@ export default Ember.Object.extend({
          return response.results.map(function(activity) {
            activity.id = activity.objectId;
            delete activity.objectId;
-           console.log(activity);
+          //  console.log(activity);
            return activity;
          });
        });

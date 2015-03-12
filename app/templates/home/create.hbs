@@ -14,31 +14,31 @@
       <div>
         <div>Select Type</div>
         <div class="mx-button">
-            {{input type="radio" name="type" id="type1"}}
-            <label for="type1" unselectable>Run</label>
+            {{type-buttons name="typeSelect" selectionBinding="activityType" value="Run/Walk" id="type1"}}
+            <label for="type1">Run/Walk</label>
         </div>
         <div class="mx-button">
-            {{input type="radio" name="type" id="type2"}}
-            <label for="type2" unselectable>Ride</label>
+            {{type-buttons name="typeSelect" selectionBinding="activityType" value="Ride" id="type2"}}
+            <label for="type2">Ride</label>
         </div>
       </div>
       <div>
         <div>Select Style</div>
         <div class="mx-button">
-          {{input type="radio" name="style" id="style1"}}
-          <label for="style1" unselectable>One-Way</label>
+          {{type-buttons name="styleSelect" selectionBinding="activityStyle" value="One-Way" id="style1"}}
+          <label for="style1">One-Way</label>
         </div>
         <div class="mx-button">
-            {{input type="radio" name="style" id="style2"}}
-            <label for="style2" unselectable>Round-Trip</label>
+          {{type-buttons name="styleSelect" selectionBinding="activityStyle" value="Round-Trip" id="style2"}}
+          <label for="style2">Round-Trip</label>
         </div>
       </div>
       <div>Select Way-Points</div>
         <div>
-        {{view "select" content=startMarker prompt="Select Start Mile Marker"}}
+        {{view "select" content=startMarker value=activityStart prompt="Select Start Mile Marker"}}
         </div>
         <div>
-        {{view "select" content=finishMarker prompt="Select Finish Mile Marker"}}
+        {{view "select" content=finishMarker value=activityFinish prompt="Select Finish Mile Marker"}}
         </div>
         <div>
           <div>Friends</div>
@@ -54,9 +54,8 @@
           <button>Cancel</button>
         {{/link-to}}
 
-
-
   </form>
+
 
 </div>
 
