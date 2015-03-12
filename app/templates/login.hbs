@@ -1,16 +1,20 @@
+<form {{action 'authenticate' on='submit'}}>
+
 <div class='login-container'>
 
 <div class="login-label">Run & Ride</div>
 
-<div>{{input placeholder="email" class="login-input" value=loginEmail}}</div>
-<div>{{input placeholder="password" class="login-input" value=loginPassword}}</div>
+<div>{{input placeholder="email" class="login-input" value=identification type='email'}}</div>
+<div>{{input placeholder="password" class="login-input" value=password type='password'}}</div>
 
-<button class="login-button" {{action "login"}}>LOGIN</button>
+<button class="login-button" type="submit">LOGIN</button>
 
 {{#link-to 'register'}}
 <div class="register-link">Need an account?</div>
 {{/link-to}}
 
 </div>
+
+</form>
 
 {{outlet}}
