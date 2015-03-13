@@ -1,9 +1,12 @@
-<h3>Account Page</h3>
+<form class='submit-container'{{action 'updateAccount' on='submit'}}>
 
-<div>Update Your Account</div>
-  {{input placeholder="Update Name" value=updateName}}
-  {{input placeholder="Update Email" value=updateEmail}}
-  {{input placeholder="Update Password" value=updatePassword}}
-  <button {{action "updateAccount"}}>Update Account</button>
+<div class="submit-label">update account</div>
+
+  {{input placeholder="update name" class="submit-input" value=updateName}}
+  {{input placeholder="update email" class="submit-input" value=updateEmail}}
+  {{input placeholder="update password" class="submit-input" value=updatePassword}}
+  <button class="submit-button" type="submit">UPDATE ACCOUNT</button>
+
+</form>
 
 {{outlet}}

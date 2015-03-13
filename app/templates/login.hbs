@@ -1,19 +1,14 @@
-<form {{action 'authenticate' on='submit'}}>
+<form class='submit-container' {{action 'authenticate' on='submit'}}>
 
-<div class='login-container'>
+<div class="submit-label">Run & Ride</div>
 
-<div class="login-label">Run & Ride</div>
+<div>{{input placeholder="email" class="submit-input" value=identification type='email'}}</div>
+<div>{{input placeholder="password" class="submit-input" value=password type='password'}}</div>
 
-<div>{{input placeholder="email" class="login-input" value=identification type='email'}}</div>
-<div>{{input placeholder="password" class="login-input" value=password type='password'}}</div>
+<button class="submit-button" type="submit">LOGIN</button>
 
-<button class="login-button" type="submit">LOGIN</button>
+<div class="submit-link">{{#link-to 'register'}}need an account?{{/link-to}}</div>
 
-{{#link-to 'register'}}
-<div class="register-link">Need an account?</div>
-{{/link-to}}
-
-</div>
 
 </form>
 

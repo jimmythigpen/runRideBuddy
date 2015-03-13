@@ -1,13 +1,15 @@
-<h3>Register Page</h3>
+<form class='submit-container'{{action 'register' on='submit'}}>
 
-<form {{action 'register' on='submit'}}>
+<div class="submit-label">Register</div>
 
-{{input placeholder="First Name" value=firstName}}
-{{input placeholder="Last Name" value=lastName}}
-{{input placeholder="email" type='email' value=username}}
-{{input placeholder="password" type='password' value=password}}
+{{input placeholder="first name" class="submit-input" value=firstName}}
+{{input placeholder="last name" class="submit-input" value=lastName}}
+{{input placeholder="email" class="submit-input" type='email' value=username}}
+{{input placeholder="password" class="submit-input" type='password' value=password}}
 
-<button type="submit"> Register </button>
+<button class="submit-button" type="submit">REGISTER</button>
+
+<div class="submit-link">{{#link-to 'login'}}already signed up?{{/link-to}}</div>
 
 </form>
 

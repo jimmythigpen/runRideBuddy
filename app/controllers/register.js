@@ -4,7 +4,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     register: function(){
-      // var self = this;
       var data = this.getProperties('firstName', 'lastName', 'username', 'password');
       data.email = data.username;
       ajax({

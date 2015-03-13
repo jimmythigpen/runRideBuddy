@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  font-color: #252525;
 }
 
 body {
@@ -13,10 +14,13 @@ body {
 
 a {
   text-decoration: none;
-  color: #8BC34A;
 
   &:hover {
-    color: #7CB342;
+  /*   color: #7CB342; */
+  }
+
+  &:visited {
+    color: #252525;
   }
 }
 
@@ -25,37 +29,60 @@ header {
   background-color: #f1eee5;
   box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
   border-radius: 2px;
+  height: 35px;
+}
+
+.account-image-container {
+  display: inline-block;
+}
+
+.account-image {
+  height: 25px;
+  border-radius: 2px;
+}
+
+.header-welcome-container {
+  @include span-columns(4, block-collapse);
+  margin-top: 5px;
+  padding-left: 10px;
+  text-align: left;
 }
 
 .header-welcome {
-  @include span-columns(4, block-collapse);
-  font-size: 2em;
-  text-align: center;
-  padding: .3em;
-  color: #292929;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 22px;
 }
 
 .header-image {
   @include span-columns(4, block-collapse);
-  font-size: 3em;
   text-align: center;
-  color: #8BC34A;
 
-  &:hover {
-    color: #7CB342;
+  i {
+    transition: all 0.15s ease-in-out 0s;
+    font-size: 35px;
+  }
+
+  i:hover {
+    color: #8BC34A;
   }
 }
 
 .header-buttons {
   @include span-columns(4, block-collapse);
-  font-size: 1.5em;
-  text-align: center;
+  padding-right: 10px;
+  font-size: 35px;
+  text-align: right;
 }
 
-.button {
-  width: 35%;
-  font-size: 2em;
-  display: inline-block;
+.button i {
+  width: 20%;
+  vertical-align: top;
+  transition: all 0.15s ease-in-out 0s;
+
+  &:hover {
+    color: #8BC34A;
+  }
 }
 
 .body-container {
@@ -63,12 +90,12 @@ header {
 }
 
 .left-container {
-  @include span-columns(6, block-collapse);
+  @include span-columns(3, block-collapse);
   padding: 10px;
 }
 
 .right-container {
-  @include span-columns(6, block-collapse);
+  @include span-columns(9, block-collapse);
   padding: 10px;
 }
 
@@ -105,7 +132,7 @@ iframe {
   margin-bottom: 5px;
 }
 
-.login-container {
+.submit-container {
   max-width: 350px;
   border-radius: 2px;
   margin: 9em auto;
@@ -114,59 +141,57 @@ iframe {
   box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
 }
 
-.login-label {
+.submit-label {
   text-align: center;
   color: #252525;
+  margin-bottom: 10px;
 }
 
-.login-button {
-    margin-top: 20px;
-    color: rgba(255, 255, 255, 0.870588);
+.submit-button {
+    margin: 20px auto;
+    color: #F9F9F9;
     cursor: pointer;
     display: block;
     height: 35px;
-    min-height: 0px;
-    min-width: 88px;
-    position: relative;
-    width: 310px;
-    perspective-origin: 155px 17.5px;
-    transform: matrix(1, 0, 0, 1, 0, 0);
-    transform-origin: 155px 17.5px;
+    width: 100%;
     background: #8BC34A;
     border: none;
-    border-radius: 2px 2px 2px 2px;
-    font: 14px sans-serif;
-    outline: rgba(255, 255, 255, 0.870588) none 0px;
-    padding: 10px 14px;
+    border-radius: 2px;
+    font-size: 14px;
+    outline: none;
     transition: all 0.15s ease-in-out 0s;
 
     &:hover {
-      background-color: #7CB342;
+      background: #7CB342;
     }
-
 }
 
-.login-input {
+.submit-input {
   color: #292929;
   display: block;
   height: 36px;
-  width: 310px;
-  perspective-origin: 155px 18px;
-  transform-origin: 155px 18px;
-  background: rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box;
-  border-top: 0px none rgb(85, 85, 85);
-  border-right: 0px none rgb(85, 85, 85);
-  border-bottom: 1px solid rgb(117, 117, 117);
-  border-left: 0px none rgb(85, 85, 85);
-  font: 16px sans-serif;
-  outline: rgb(85, 85, 85) none 0px;
-  padding: 0px;
-  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-}
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f1eee5;
+  border-top: none;
+  border-right: none;
+  border-bottom: 2px solid rgb(117, 117, 117);
+  border-left: none;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
 
-.register-link {
-  margin-top: 10px;
+  &:focus {
+    border-color: #8BC34A;
+  }
+}
+.submit-link a {
   color: #252525;
+  transition: all 0.15s ease-in-out 0s;submit
+
+  &:hover {
+    color: #8BC34A;
+  }
 }
 
 //
@@ -235,4 +260,13 @@ iframe {
 .mx-button input:checked + label {
     background: #f5f5f5;
     box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.15), 0 1px 2px  rgba(0, 0, 0, 0.05);
+}
+
+//
+// Media Queries
+//
+@media screen and (max-width: 510px) {
+  .header-welcome {
+    display: none;
+  }
 }
