@@ -18,14 +18,28 @@ export default Ember.Controller.extend({
       createData.activityOwner = {
         __type:"Pointer",
         className:"_User",
-        objectId:"8qwbgX3SRG"
+        objectId: this.get('session.currentUser.id')
       };
       ajax({
         url:  "https://api.parse.com/1/classes/activity",
         type: "POST",
         data: JSON.stringify(createData),
         contentType: 'application/json'
-      });
+
+      }).then(function(response){
+        var currentUser = this.get('session.currentUser.id');
+        var activity = {};
+        activity.joinedActivities = {
+          __op: "AddRelation",
+          objects: [{__type:"Pointer",className:"activity",objectId: response.objectId}],
+        };
+        ajax({
+          url:  "https://api.parse.com/1/users/" + currentUser,
+          type: "PUT",
+          data: JSON.stringify(activity),
+          contentType: 'application/json'
+        });
+      }.bind(this));
     }
   }
 });

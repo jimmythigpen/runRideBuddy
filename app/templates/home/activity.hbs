@@ -1,18 +1,19 @@
 <h3>Activity Page</h3>
 
 {{outlet}}
-
-<div>Name</div>
+<div>Activity Owner</div>
+{{model.activityOwner.firstName}}
+<div>Activity Name</div>
 {{model.activityName}}
-<div>Date</div>
+<div>Activity Date</div>
 {{moment model.activityDate.iso}}
-<div>Type</div>
+<div>Activity Type</div>
 {{model.activityType}}
-<div>Way-Points</div>
-Start: {{model.activityStartMarker}} Finish: {{model.activityFinishMarker}}
-<div>Friends</div>
+<div>Activity Way-Points</div>
+Start: {{model.activityStart}} Finish: {{model.activityFinish}}
+<div>Activity Friends</div>
 {{model.activityFriends}}
-<div>Notes</div>
+<div>Activity Notes</div>
 {{model.activityNotes}}
 
 <div>
