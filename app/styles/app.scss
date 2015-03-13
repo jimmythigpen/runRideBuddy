@@ -121,10 +121,6 @@ iframe {
   background-color: #f1eee5;
 }
 
-.activity-list {
-
-}
-
 .activity-list-item {
   list-style: none;
   border-radius: 5px;
@@ -187,7 +183,7 @@ iframe {
 }
 .submit-link a {
   color: #252525;
-  transition: all 0.15s ease-in-out 0s;submit
+  transition: all 0.15s ease-in-out 0s;
 
   &:hover {
     color: #8BC34A;
@@ -265,8 +261,16 @@ iframe {
 //
 // Media Queries
 //
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 700px) {
   .header-welcome {
     display: none;
+  }
+
+  .left-container {
+    @include span-columns(12, block-collapse);
+  }
+
+  .right-container {
+    @include span-columns(12, block-collapse);
   }
 }

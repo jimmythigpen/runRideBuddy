@@ -13,6 +13,7 @@
     "qunit": "~1.17.1",
     "bourbon": "~4.2.1",
     "neat": "~1.7.1",
-    "ember-simple-auth": "0.7.3"
+    "ember-simple-auth": "0.7.3",
+    "ember-cli-moment-shim": "~0.0.3"
   }
 }
