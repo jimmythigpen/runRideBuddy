@@ -1,6 +1,7 @@
 <form class='submit-container' {{action 'authenticate' on='submit'}}>
 
-<div class="submit-label">Run & Ride</div>
+<div class="submit-label">Welcome to Trail</div>
+<div class="login-image"><img class="logo" src="assets/images/logo.svg"></div>
 
 <div>{{input placeholder="email" class="submit-input" value=identification type='email'}}</div>
 <div>{{input placeholder="password" class="submit-input" value=password type='password'}}</div>
@@ -8,7 +9,6 @@
 <button class="submit-button" type="submit">LOGIN</button>
 
 <div class="submit-link">{{#link-to 'register'}}need an account?{{/link-to}}</div>
-
 
 </form>
 

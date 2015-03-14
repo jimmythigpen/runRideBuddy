@@ -1,34 +1,47 @@
 @import 'bower_components/bourbon/app/assets/stylesheets/bourbon';
 @import 'bower_components/neat/app/assets/stylesheets/neat';
 
+$font-stack: 'Roboto', sans-serif;
+
+$white: #fafafa;
+
+$primary: #f1eee5;
+$primary-light: #fdf8ee;
+$primary-dark: #e4e0d6;
+
+$secondary: #8bc34a;
+$secondary-light: #dcedc8;
+$secondary-dark: #689f38;
+
+$primary-text: #252525;
+$secondary-text: #717171;
+$hint-text: #b6b6b6;
+
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  font-color: #252525;
+  color: $primary-text;
+  font-family: $font-stack;
 }
 
 body {
-  background-color: #f9f9f9;
+  background-color: white;
 }
 
 a {
   text-decoration: none;
 
-  &:hover {
-  /*   color: #7CB342; */
-  }
-
-  &:visited {
-    color: #252525;
-  }
+/*   &:visited {
+  color: #252525;
+} */
 }
 
 header {
   @include outer-container(block-collapse);
-  background-color: #f1eee5;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
-  border-radius: 2px;
+  background-color: $primary;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  border-radius: 3px;
   height: 35px;
 }
 
@@ -37,13 +50,13 @@ header {
 }
 
 .account-image {
+  border-radius: 3px;
   height: 25px;
-  border-radius: 2px;
 }
 
 .header-welcome-container {
   @include span-columns(4, block-collapse);
-  margin-top: 5px;
+  margin-top: 4px;
   padding-left: 10px;
   text-align: left;
 }
@@ -57,31 +70,38 @@ header {
 .header-image {
   @include span-columns(4, block-collapse);
   text-align: center;
-
-  i {
-    transition: all 0.15s ease-in-out 0s;
-    font-size: 35px;
-  }
-
-  i:hover {
-    color: #8BC34A;
-  }
+  height: 34px;
 }
+
+.logo {
+  /* transition: all 0.15s ease-in-out 0s; */
+  height: 100%
+}
+
+/* .logo:hover {
+  color: #8BC34A;
+} */
 
 .header-buttons {
   @include span-columns(4, block-collapse);
   padding-right: 10px;
-  font-size: 35px;
+  height: 34px;
   text-align: right;
+
+  a {
+    text-align: center;
+  }
 }
 
-.button i {
+.header-buttons i {
   width: 20%;
   vertical-align: top;
   transition: all 0.15s ease-in-out 0s;
+  font-size: 33px;
+  cursor: pointer;
 
   &:hover {
-    color: #8BC34A;
+    color: $primary;
   }
 }
 
@@ -106,88 +126,94 @@ iframe {
 }
 
 .map-container {
-  border-radius: 5px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
   padding: 2px;
-  height: 550px;
-  background-color: #f1eee5;
+  height: 575px;
+  background-color: $primary;
 }
 
 .user-activity-container {
-  border-radius: 5px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
   padding: 10px;
-  height: 550px;
-  background-color: #f1eee5;
+  height: 575px;
+  background-color: $primary;
 }
 
 .activity-list-item {
   list-style: none;
-  border-radius: 5px;
-  border: 2px solid #8BC34A;
+  border-radius: 3px;
+  border: 2px solid $secondary;
   margin-bottom: 5px;
 }
 
 .submit-container {
   max-width: 350px;
-  border-radius: 2px;
-  margin: 9em auto;
+  border-radius: 3px;
+  margin: 7em auto;
   padding: 20px;
-  background-color: #f1eee5;
+  background-color: $primary;
   box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
 }
 
 .submit-label {
   text-align: center;
-  color: #252525;
+  color: $primary-text;
   margin-bottom: 10px;
+  font-size: 25px;
 }
 
 .submit-button {
     margin: 20px auto;
-    color: #F9F9F9;
+    color: $white;
     cursor: pointer;
     display: block;
     height: 35px;
     width: 100%;
-    background: #8BC34A;
+    background: $secondary;
     border: none;
-    border-radius: 2px;
+    border-radius: 3px;
     font-size: 14px;
     outline: none;
     transition: all 0.15s ease-in-out 0s;
 
     &:hover {
-      background: #7CB342;
+      background: $secondary-dark;
     }
 }
 
 .submit-input {
-  color: #292929;
   display: block;
   height: 36px;
   width: 100%;
   margin: 0 auto;
-  background-color: #f1eee5;
+  background-color: $primary;
   border-top: none;
   border-right: none;
-  border-bottom: 2px solid rgb(117, 117, 117);
+  border-bottom: 2px solid $secondary-text;
   border-left: none;
   font-size: 16px;
   outline: none;
   transition: all 0.15s ease-in-out 0s;
 
   &:focus {
-    border-color: #8BC34A;
+    border-color: $secondary;
   }
 }
 .submit-link a {
-  color: #252525;
   transition: all 0.15s ease-in-out 0s;
 
   &:hover {
-    color: #8BC34A;
+    color: $secondary;
   }
+}
+
+.login-image {
+  height: 100px;
+  text-align: center;
 }
 
 //

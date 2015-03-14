@@ -4,26 +4,17 @@
   <h3>Runs & Rides</h3>
   <div class="user-activity-container">
     <ul class="activity-list">
+      {{#each activity in model}}
       <li class="activity-list-item">
-      <div>Jimmy Thigpen</div>
-      <div>Coffee fun run!</div>
+      <div>{{activity.activityOwner.firstName}} {{activity.activityOwner.lastName}}</div>
+      <div>{{activity.activityName}}</div>
       <div>3.5 Miles</div>
-      <div>Monday March 10, 2015</div>
-      <div>10:30 AM</div>
+      <div>{{moment activity.activityDate.iso}}</div>
       {{#link-to 'home.activity'}}
         <button>Details</button>
       {{/link-to}}
       </li>
-      <li class="activity-list-item">
-      <div>Erik Eggers</div>
-      <div>Coffee not fun run.</div>
-      <div>1 Mile</div>
-      <div>Tuesday March 11, 2015</div>
-      <div>9:00 AM</div>
-      {{#link-to 'home.activity'}}
-        <button>Details</button>
-      {{/link-to}}
-      </li>
+      {{/each}}
     </ul>
   </div>
 </div>

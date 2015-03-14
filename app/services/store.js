@@ -10,22 +10,24 @@ export default Ember.Object.extend({
     if(cached) { return Ember.RSVP.resolve(cached); }
 
     var adapter = this.container.lookup('adapter:' + type);
-    return adapter.find(type, id).then(function(record) {
+    return adapter.find(type, id).then(function(recordData) {
+      var record = this.createRecord(type, recordData);
       identityMap.set(type, id, record);
       return record;
-    });
+    }.bind(this));
   },
 
   findAll: function(type){
     var adapter = this.container.lookup('adapter:' + type);
-    return adapter.findAll(type).then(function(records) {
+    return adapter.findAll(type).then(function(recordsData) {
       identityMap.clear(type);
-      records.forEach(function(r) {
-        identityMap.set(type, r.id, r);
-      });
+      recordsData.forEach(function(recordData) {
+        var record = this.createRecord(type, recordData);
+        identityMap.set(type, record.id, record);
+      }.bind(this));
 
       return identityMap.get(type);
-    });
+    }.bind(this));
   },
 
   findQuery: function(type, query){
@@ -42,13 +44,25 @@ export default Ember.Object.extend({
 
   save: function(type, record) {
     var adapter = this.container.lookup('adapter:' + type);
-    return adapter.save(type, record).then(function() {
+    var serialized = record.toJSON();
+
+    return adapter.save(type, serialized).then(function(recordData) {
+      var record = this.createRecord(type, recordData);
       identityMap.set(type, record.id, record);
-      return record;
-    });
+      return identityMap.get(type, record.id);
+    }.bind(this));
   },
 
   push: function(type, record) {
     return identityMap.set(type, record.id, record);
+  },
+
+  createRecord: function(type, properties){
+    var klass = this.modelFor(type);
+    return klass.create(properties);
+  },
+
+  modelFor: function(type) {
+    return this.container.lookupFactory('model:' + type);
   }
 });
