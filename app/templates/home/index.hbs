@@ -1,30 +1,34 @@
-<div class="body-container"></div>
+<div class="body-container">
 
 <div class="left-container">
-  <h3>Runs & Rides</h3>
-  <div class="user-activity-container">
-    <ul class="activity-list">
-      {{#each activity in model}}
-      <li class="activity-list-item">
-      <div>{{activity.activityOwner.firstName}} {{activity.activityOwner.lastName}}</div>
-      <div>{{activity.activityName}}</div>
-      <div>3.5 Miles</div>
-      <div>{{moment activity.activityDate.iso}}</div>
-      {{#link-to 'home.activity'}}
-        <button>Details</button>
-      {{/link-to}}
-      </li>
-      {{/each}}
-    </ul>
-  </div>
-</div>
 
-<div class="right-container">
-  <h3>Explore the swamp rabbit trail!</h3>
-  <div class="map-container"><iframe frameBorder='0'src='http://goo.gl/921Frn'></iframe></div>
-  <span>
-    {{#link-to 'home.create'}}
-      <button>Create New</button>
-    {{/link-to}}
-  </span>
+  <div class="user-activity-container">
+    <div class="container-title">Runs & Rides</div>
+      <ul class="activity-list">
+        {{#each activity in model}}
+        <li class="activity-list-item">
+        <div class="activity-name">{{activity.activityName}}</div>
+        <div class="activity-info">{{activity.activityOwner.firstName}} {{activity.activityOwner.lastName}}</div>
+        <div class="activity-info">3.5 Miles</div>
+        <div class="activity-info">{{activity.activityType}}</div>
+        <div class="activity-info">{{moment activity.activityDate.iso}}</div>
+        {{#link-to 'home.activity'}}
+          <button>Details</button>
+        {{/link-to}}
+        </li>
+        {{/each}}
+      </ul>
+      {{#link-to 'home.create'}}
+        <button>Create New</button>
+      {{/link-to}}
+    </div>
+  </div>
+
+  <div class="right-container">
+    <div class="map-container">
+      <div class="container-title">Explore the swamp rabbit trail!</div>
+      <iframe frameBorder='0'src='http://goo.gl/921Frn'></iframe>
+    </div>
+  </div>
+
 </div>

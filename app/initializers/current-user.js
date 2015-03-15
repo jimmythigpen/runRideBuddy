@@ -3,10 +3,11 @@ import Session from "simple-auth/session";
 
 export function initialize(container, application) {
 
+  application.inject('adapter', 'session', 'simple-auth-session:main');
+
   Session.reopen({
     setCurrentUser: function() {
       var id = this.get("objectId");
-      // application.inject('adapter', 'id', 'initializer:current-user');
       if (!Ember.isEmpty(id)) {
         return container.lookup("service:store").find("user", id).then(function(user) {
           this.set("currentUser", user);

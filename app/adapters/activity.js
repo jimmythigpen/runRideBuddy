@@ -11,8 +11,8 @@ export default Ember.Object.extend({
   },
 
     findAll: function(){
-    // console.log(this.user);
-       return ajax("https://api.parse.com/1/classes/activity" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"_User","objectId":"0TJ9ir42PX"},"key":"joinedActivities"}}}' + "&include=activityOwner").then(function(response){
+    var currentUser = this.session.content.objectId;
+       return ajax("https://api.parse.com/1/classes/activity" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '},"key":"joinedActivities"}}}' + "&include=activityOwner").then(function(response){
          return response.results.map(function(activity) {
            activity.id = activity.objectId;
            delete activity.objectId;
