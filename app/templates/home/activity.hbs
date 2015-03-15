@@ -1,25 +1,46 @@
-<h3>Activity Page</h3>
+<div class="body-container">
 
-{{outlet}}
-<div>Activity Owner</div>
-{{model.activityOwner.firstName}}
-<div>Activity Name</div>
-{{model.activityName}}
-<div>Activity Date</div>
-{{moment model.activityDate.iso}}
-<div>Activity Type</div>
-{{model.activityType}}
-<div>Activity Way-Points</div>
-Start: {{model.activityStart}} Finish: {{model.activityFinish}}
-<div>Activity Friends</div>
-{{model.activityFriends}}
-<div>Activity Notes</div>
-{{model.activityNotes}}
+  <div class="left-container">
+    <div class="user-activity-container">
+      <div class="container-title">Activity Details</div>
 
-<div>
-<button {{action "updateAccount"}}>Edit</button>
-<button {{action "updateAccount"}}>Save</button>
-<button {{action "updateAccount"}}>Delete</button>
-<button {{action "updateAccount"}}>Cancel</button>
-<button {{action "updateAccount"}}>Leave Activity</button>
+      {{outlet}}
+
+      <div class="activity-info">Activity Owner</div>
+      <div>{{input placeholder="owner" class="submit-input" value=model.activityOwner.firstName readonly="readonly"}}</div>
+      <div class="activity-info">Activity Name</div>
+      <div>{{input placeholder="owner" class="submit-input" value=model.activityName readonly="readonly"}}</div>
+      <div class="activity-info">Activity Date</div>
+      <!-- {{moment model.activityDate.iso}} -->
+      <div>{{input placeholder="owner" class="submit-input" value=model.activityDate.iso readonly="readonly"}}</div>
+      <div class="activity-info">Activity Type</div>
+      <div>{{input placeholder="owner" class="submit-input" value=model.activityType readonly="readonly"}}</div>
+      <div class="activity-info">Activity Way-Points</div>
+      <div class="submit-input">Start: {{model.activityStart}} Finish: {{model.activityFinish}}</div>
+      <div class="activity-info">Activity Friends</div>
+      <ul class="submit-input">
+      <!-- {{#each friend in model.activityFriends}}
+        {{log friend}}
+      {{/each}} -->
+      {{model.activityFriends}}
+      </ul>
+      <div class="activity-info">Activity Notes</div>
+      <div>{{textarea placeholder="owner" class="submit-input" value=model.activityNotes readonly="readonly"}}</div>
+      <div>
+        <button {{action "updateAccount"}}>Edit</button>
+        <button {{action "updateAccount"}}>Save</button>
+        <button {{action "updateAccount"}}>Delete</button>
+        <button {{action "updateAccount"}}>Cancel</button>
+        <button {{action "updateAccount"}}>Leave Activity</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-container">
+    <div class="map-container">
+      <div class="container-title">Explore the swamp rabbit trail!</div>
+      <iframe frameBorder='0'src='http://goo.gl/921Frn'></iframe>
+    </div>
+  </div>
+
 </div>
