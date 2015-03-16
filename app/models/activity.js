@@ -35,9 +35,9 @@ export default Ember.Object.extend({
   },
 
   toJSON: function(){
-    var data = this.get('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
+    var data = this.getProperties('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
     // var data = Ember.Object.create(this);
-    var ownerId = this.get('activityOwner.objectId');
+    var ownerId = this.get('activityOwner.id');
     if(ownerId) {
     Ember.set(data, 'activityOwner', {
         __type: 'Pointer',
@@ -45,11 +45,12 @@ export default Ember.Object.extend({
         objectId: ownerId
       });
     }
+
     // console.log(new Date(this.getProperties('activityDate')));
-    // Ember.set(data, 'activityDate', {
-    //   __type: "Date",
-    //   iso: (new Date(this.getProperties('activityDate.iso'))).toISOString()
-    // });
+    Ember.set(data, 'activityDate', {
+      __type: "Date",
+      iso: (new Date(this.get('activityDate'))).toISOString()
+    });
 
     return data;
   }

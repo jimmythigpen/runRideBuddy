@@ -7,6 +7,7 @@ export default Ember.Object.extend({
     return ajax("https://api.parse.com/1/classes/activity/" + id + "?include=activityOwner").then(function(response){
       activity = response;
       activity.id = activity.objectId;
+      activity.activityDate = activity.activityDate.iso;
       delete activity.objectId;
       return activity;
     }).then(function(){
@@ -36,9 +37,8 @@ export default Ember.Object.extend({
           type: "PUT",
           data: JSON.stringify(record.toJSON()),
         }).then(function(response) {
-          response.id = response.objectId;
-          delete response.objectId;
-          return response;
+          record.updatedAt = response.updatedAt;
+          return record;
         });
       } else {
         return ajax({
@@ -47,6 +47,9 @@ export default Ember.Object.extend({
           data: JSON.stringify(record.toJSON()),
           contentType: 'application/json'
         }).then(function(response){
+          record.id = response.objectId;
+          record.createdAt = response.createdAt;
+
           return ajax({
             url:  "https://api.parse.com/1/classes/activity/" + response.objectId,
             type: "PUT",
