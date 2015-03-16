@@ -12,7 +12,7 @@
         <div class="activity-preview-info">3.5 Miles</div>
         <div class="activity-preview-info">{{activity.activityType}}</div>
         <div class="activity-preview-info">{{moment activity.activityDate.iso}}</div>
-        {{#link-to 'home.activity' activity}}
+        {{#link-to 'home.activity' activity.id}}
           <button class="details-button">Details</button>
         {{/link-to}}
         </li>

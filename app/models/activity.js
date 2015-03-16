@@ -9,6 +9,18 @@ export default Ember.Object.extend({
     return this.store.save('activity', this);
   },
 
+  addFriend: function(friend) {
+    // ajax with addRelation with serializeFriend(friend)
+  },
+
+  removeFriend: function(friend) {
+    // ajax with removeRelation with serializeFriend(friend)
+  },
+
+  serializeFriend: function(friend) {
+    return {__type: "Pointer", className: "_User", objectId: friend.id};
+  },
+
   serializeFriends: function(){
     return {
       activityFriends: {
@@ -17,30 +29,27 @@ export default Ember.Object.extend({
           {__type:"Pointer",className:"_User",objectId: "ZgsnF0hE4t"},
           {__type:"Pointer",className:"_User",objectId: "zbywJVtVHS"}
         ]
-        // objects: this.get('activityFriends').map(function(friend){
-        //   return {__type: "Pointer", className: "_User", objectId: friend.id};
-        // })
+        // objects: this.get('activityFriends').map(this.serializeFriend)
       }
     };
   },
 
   toJSON: function(){
-
-    var data = Ember.Object.create(this);
-
-    var ownerId = this.get('activityOwner.id');
+    var data = this.get('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
+    // var data = Ember.Object.create(this);
+    var ownerId = this.get('activityOwner.objectId');
     if(ownerId) {
-      data.set('activityOwner', {
+    Ember.set(data, 'activityOwner', {
         __type: 'Pointer',
         className: '_User',
         objectId: ownerId
       });
     }
-
-    data.set('activityDate', {
-      __type: "Date",
-      iso: (new Date(this.get('activityDate'))).toISOString()
-    });
+    // console.log(new Date(this.getProperties('activityDate')));
+    // Ember.set(data, 'activityDate', {
+    //   __type: "Date",
+    //   iso: (new Date(this.getProperties('activityDate.iso'))).toISOString()
+    // });
 
     return data;
   }

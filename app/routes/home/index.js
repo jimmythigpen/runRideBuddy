@@ -3,7 +3,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function(){
-    // console.log(this.get('session.content.objectId'));
     return this.store.findAll('activity');
 
   },

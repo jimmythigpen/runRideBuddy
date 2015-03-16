@@ -3,10 +3,17 @@ import Ember from 'ember';
 
 export default Ember.Object.extend({
   find: function(name, id){
-      return ajax("https://api.parse.com/1/classes/activity/" + id + "?include=activityOwner").then(function(activity){
-        activity.id = activity.objectId;
-        delete activity.objectId;
-        return activity;
+    var activity;
+    return ajax("https://api.parse.com/1/classes/activity/" + id + "?include=activityOwner").then(function(response){
+      activity = response;
+      activity.id = activity.objectId;
+      delete activity.objectId;
+      return activity;
+    }).then(function(){
+      return ajax("https://api.parse.com/1/users" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"activity","objectId":'+ '\"' + id + '\"' + '},"key":"activityFriends"}}}');
+    }).then(function(response){
+      activity.activityFriends = response.results;
+      return activity;
     });
   },
 
@@ -22,22 +29,12 @@ export default Ember.Object.extend({
        });
      },
 
-//I want to return the users that are in the activity’s activityFriends
-//'where={"post":{"__type":"Pointer","className":"Post","objectId":"8TOXdXf3tz"}}'
-
     save: function(name, record){
-      console.log(name, record);
-      // var owner = {
-      //   __type:"Pointer",
-      //   className:"_User",
-      //   objectId: this.get('session.currentUser.id')
-      // };
-      // this.set('record.activityOwner', owner);
       if(record.id) {
         return ajax({
           url: "https://api.parse.com/1/classes/activity/" + record.id,
           type: "PUT",
-          data: JSON.stringify(record)
+          data: JSON.stringify(record.toJSON()),
         }).then(function(response) {
           response.id = response.objectId;
           delete response.objectId;
@@ -45,9 +42,17 @@ export default Ember.Object.extend({
         });
       } else {
         return ajax({
-          url: "https://api.parse.com/1/classes/activity",
+          url:  "https://api.parse.com/1/classes/activity",
           type: "POST",
-          data: JSON.stringify(record)
+          data: JSON.stringify(record.toJSON()),
+          contentType: 'application/json'
+        }).then(function(response){
+          return ajax({
+            url:  "https://api.parse.com/1/classes/activity/" + response.objectId,
+            type: "PUT",
+            data: JSON.stringify(record.serializeFriends()),
+            contentType: 'application/json'
+          });
         }).then(function(response) {
           record.updatedAt = response.updatedAt;
           return record;

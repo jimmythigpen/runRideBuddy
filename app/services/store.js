@@ -6,8 +6,8 @@ var identityMap = IdentityMap.create();
 export default Ember.Object.extend({
   find: function(type, id){
 
-    var cached = identityMap.get(type, id);
-    if(cached) { return Ember.RSVP.resolve(cached); }
+    // var cached = identityMap.get(type, id);
+    // if(cached) { return Ember.RSVP.resolve(cached); }
 
     var adapter = this.container.lookup('adapter:' + type);
     return adapter.find(type, id).then(function(recordData) {
@@ -44,9 +44,7 @@ export default Ember.Object.extend({
 
   save: function(type, record) {
     var adapter = this.container.lookup('adapter:' + type);
-    var serialized = record.toJSON();
-
-    return adapter.save(type, serialized).then(function(recordData) {
+    return adapter.save(type, record).then(function(recordData) {
       var record = this.createRecord(type, recordData);
       identityMap.set(type, record.id, record);
       return identityMap.get(type, record.id);

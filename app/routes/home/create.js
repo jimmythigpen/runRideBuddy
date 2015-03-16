@@ -7,12 +7,4 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
        activityOwner: this.get('session.currentUser')
      });
    },
-
-   actions: {
-     createActivity: function(){
-       this.modelFor('home.create').save().then(function() {
-         this.transitionTo('home');
-       }.bind(this));
-     }
-   }
  });
