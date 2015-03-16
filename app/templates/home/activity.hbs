@@ -4,6 +4,7 @@
   <div class="user-activity-container">
     <div class="container-title">Activity Details</div>
       <div class="edit-info">Activity Owner</div>
+      {{log model.activityOwner}}
         <div>{{input placeholder="activity owner" class="edit-input" value=model.activityOwner.firstName readonly=true}}</div>
       <div class="edit-info">Activity Name</div>
         <div>{{input placeholder="activity name" class="edit-input" value=model.activityName readonly=isEditing}}</div>

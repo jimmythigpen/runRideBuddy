@@ -6,40 +6,40 @@
   <form>
     <div>
       <div>Name your activity</div>
-      {{input placeholder="Name Activity" value=activityName}}
+      {{input placeholder="Name Activity" value=model.activityName}}
     </div>
     <div>
       <div>Select Date and Time</div>
-      {{input type="datetime-local" value=activityDate step="900"}}
+      {{input type="datetime-local" value=model.activityDate step="900"}}
     </div>
       <div>
         <div>Select Type</div>
         <div class="mx-button">
-            {{type-buttons name="typeSelect" selectionBinding="activityType" value="Run" id="type1"}}
+            {{type-buttons name="typeSelect" selectionBinding="model.activityType" value="Run" id="type1"}}
             <label for="type1">Run</label>
         </div>
         <div class="mx-button">
-            {{type-buttons name="typeSelect" selectionBinding="activityType" value="Ride" id="type2"}}
+            {{type-buttons name="typeSelect" selectionBinding="model.activityType" value="Ride" id="type2"}}
             <label for="type2">Ride</label>
         </div>
       </div>
       <div>
         <div>Select Style</div>
         <div class="mx-button">
-          {{type-buttons name="styleSelect" selectionBinding="activityStyle" value="One-Way" id="style1"}}
+          {{type-buttons name="styleSelect" selectionBinding="model.activityStyle" value="One-Way" id="style1"}}
           <label for="style1">One-Way</label>
         </div>
         <div class="mx-button">
-          {{type-buttons name="styleSelect" selectionBinding="activityStyle" value="Round-Trip" id="style2"}}
+          {{type-buttons name="styleSelect" selectionBinding="model.activityStyle" value="Round-Trip" id="style2"}}
           <label for="style2">Round-Trip</label>
         </div>
       </div>
       <div>Select Way-Points</div>
         <div>
-        {{view "select" content=startMarker value=activityStart prompt="Select Start Mile Marker"}}
+        {{view "select" content=startMarker value=model.activityStart prompt="Select Start Mile Marker"}}
         </div>
         <div>
-        {{view "select" content=finishMarker value=activityFinish prompt="Select Finish Mile Marker"}}
+        {{view "select" content=finishMarker value=model.activityFinish prompt="Select Finish Mile Marker"}}
         </div>
         <div>
           <div>Friends</div>
@@ -47,7 +47,7 @@
           <button {{action "addFriend"}}>Add Friend</button>
         </div>
         <div>Notes</div>
-        {{textarea placeholder="Notes" value=activityNotes}}
+        {{textarea placeholder="Notes" value=model.activityNotes}}
         {{#link-to 'home'}}
           <button {{action "saveNew"}}>Save</button>
         {{/link-to}}

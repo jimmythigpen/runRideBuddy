@@ -22,13 +22,11 @@ export default Ember.Controller.extend({
       this.set('isEditing', true);
     },
 
-    isEditing: true,
-
     save: function() {
       this.get('model').save();
     }
+  },
 
-},
-
+  isEditing: true,
 
 });
