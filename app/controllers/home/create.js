@@ -10,26 +10,19 @@ export default Ember.Controller.extend({
   actions: {
     saveNew: function(){
       var createData = this.get('model').toJSON();
-      ajax({
+      return ajax({
         url:  "https://api.parse.com/1/classes/activity",
         type: "POST",
         data: JSON.stringify(createData),
         contentType: 'application/json'
 
-    }).then(function(response){
-          var activity = {};
-          activity.activityFriends = {
-            __op: "AddRelation",
-            objects: [{__type:"Pointer",className:"_User",objectId: "ZgsnF0hE4t"},
-                      {__type:"Pointer",className:"_User",objectId: "zbywJVtVHS"}
-                    ],
-          };
-          ajax({
-            url:  "https://api.parse.com/1/classes/activity/" + response.objectId,
-            type: "PUT",
-            data: JSON.stringify(activity),
-            contentType: 'application/json'
-          // });
+      }).then(function(response){
+        var activity = this.get('model').serializeFriends();
+        return ajax({
+          url:  "https://api.parse.com/1/classes/activity/" + response.objectId,
+          type: "PUT",
+          data: JSON.stringify(activity),
+          contentType: 'application/json'
         });
       }.bind(this));
     }

@@ -9,6 +9,21 @@ export default Ember.Object.extend({
     return this.store.save('activity', this);
   },
 
+  serializeFriends: function(){
+    return {
+      activityFriends: {
+        __op: "AddRelation",
+        objects: [
+          {__type:"Pointer",className:"_User",objectId: "ZgsnF0hE4t"},
+          {__type:"Pointer",className:"_User",objectId: "zbywJVtVHS"}
+        ]
+        // objects: this.get('activityFriends').map(function(friend){
+        //   return {__type: "Pointer", className: "_User", objectId: friend.id};
+        // })
+      }
+    };
+  },
+
   toJSON: function(){
 
     var data = Ember.Object.create(this);
