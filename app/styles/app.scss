@@ -6,11 +6,11 @@ $font-stack: 'Roboto', sans-serif;
 $white: #fafafa;
 
 $primary: #f1eee5;
-$primary-light: #fdf8ee;
+$primary-light: #a5d860;
 $primary-dark: #e4e0d6;
 
 $secondary: #8bc34a;
-$secondary-light: #dcedc8;
+$secondary-light: #9ed05c;
 $secondary-dark: #689f38;
 
 $primary-text: #252525;
@@ -100,6 +100,10 @@ header {
   &:hover {
     color: $secondary;
   }
+
+  &:active {
+    color: $secondary-dark;
+  }
 }
 
 .body-container {
@@ -153,9 +157,10 @@ iframe {
 .activity-list-item {
   list-style: none;
   border-radius: 3px;
-  border: 2px solid $secondary;
+  border: 2px solid $secondary-light;
   margin-bottom: 5px;
   padding: 2px;
+  position: relative;
 }
 
 .activity-name {
@@ -165,6 +170,7 @@ iframe {
 
 .activity-preview-info {
   font-size: 14px;
+  color: $secondary-text;
 }
 
 .submit-container {
@@ -191,7 +197,7 @@ iframe {
     display: block;
     height: 35px;
     width: 100%;
-    background: $secondary;
+    background: $secondary-light;
     border: none;
     border-radius: 3px;
     font-size: 14px;
@@ -199,6 +205,10 @@ iframe {
     transition: all 0.15s ease-in-out 0s;
 
     &:hover {
+      background: $secondary;
+    }
+
+    &:active {
       background: $secondary-dark;
     }
 }
@@ -230,6 +240,31 @@ iframe {
   }
 }
 
+.details-button {
+  color: #fafafa;
+  cursor: pointer;
+  height: 20px;
+  width: 50px;
+  background: #8bc34a;
+  border: none;
+  border-radius: 3px 0px 0px 0px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background:$secondary-light;
+
+  &:hover {
+    background: $secondary;
+  }
+
+  &:active {
+    background: $secondary-dark;
+  }
+}
+
 .login-image {
   height: 100px;
   text-align: center;
@@ -237,6 +272,38 @@ iframe {
 
 .activity-info {
   text-align: center;
+}
+
+.edit-info {
+  font-weight: 500;
+}
+
+.edit-input {
+  display: block;
+  height: 36px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: $primary;
+  color: $secondary-text;
+  border-top: none;
+  border-right: none;
+  border-bottom: 2px solid $secondary-text;
+  border-left: none;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
+
+  &:focus {
+    border-color: $secondary;
+  }
+}
+
+.date-input {
+  width: 100%;
+  background: #F1EDE4;
+  border: none;
+  font-size: 14px;
+  color: $secondary-text;
 }
 
 //

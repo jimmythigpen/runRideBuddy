@@ -1,46 +1,54 @@
 <div class="body-container">
 
-  <div class="left-container">
-    <div class="user-activity-container">
-      <div class="container-title">Activity Details</div>
-
-      {{outlet}}
-
-      <div class="activity-info">Activity Owner</div>
-      <div>{{input placeholder="owner" class="submit-input" value=model.activityOwner.firstName readonly="readonly"}}</div>
-      <div class="activity-info">Activity Name</div>
-      <div>{{input placeholder="owner" class="submit-input" value=model.activityName readonly="readonly"}}</div>
-      <div class="activity-info">Activity Date</div>
-      <!-- {{moment model.activityDate.iso}} -->
-      <div>{{input placeholder="owner" class="submit-input" value=model.activityDate.iso readonly="readonly"}}</div>
-      <div class="activity-info">Activity Type</div>
-      <div>{{input placeholder="owner" class="submit-input" value=model.activityType readonly="readonly"}}</div>
-      <div class="activity-info">Activity Way-Points</div>
-      <div class="submit-input">Start: {{model.activityStart}} Finish: {{model.activityFinish}}</div>
-      <div class="activity-info">Activity Friends</div>
-      <ul class="submit-input">
-      <!-- {{#each friend in model.activityFriends}}
-        {{log friend}}
-      {{/each}} -->
-      {{model.activityFriends}}
-      </ul>
-      <div class="activity-info">Activity Notes</div>
-      <div>{{textarea placeholder="owner" class="submit-input" value=model.activityNotes readonly="readonly"}}</div>
+<div class="left-container">
+  <div class="user-activity-container">
+    <div class="container-title">Activity Details</div>
+      <div class="edit-info">Activity Owner</div>
+        <div>{{input placeholder="activity owner" class="edit-input" value=model.activityOwner.firstName readonly=true}}</div>
+      <div class="edit-info">Activity Name</div>
+        <div>{{input placeholder="activity name" class="edit-input" value=model.activityName readonly=isEditing}}</div>
+      <div class="edit-info">Activity Date</div>
+        <!-- {{log model.activityDate.iso}} -->
+        <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activityDate readonly=isEditing autocomplete=on}}</div>
+      <div class="edit-info">Activity Type</div>
+       <div class="edit-input">
+         <div class="mx-button">
+          {{type-buttons name="typeSelect" selectionBinding="model.activityType" value="Run" id="type1" disabled=isEditing}}
+          <label for="type1">Run</label>
+         </div>
+        <div class="mx-button">
+          {{type-buttons name="typeSelect" selectionBinding="model.activityType" value="Ride" id="type2" disabled=isEditing}}
+          <label for="type2">Ride</label>
+        </div>
+       </div>
+      <div class="edit-info">Activity Way-Points</div>
+       <div class="edit-input">Start: {{view "select" content=startMarker value=model.activityStart disabled=isEditing}} Finish: {{view "select" content=finishMarker value=model.activityFinish disabled=isEditing}}</div>
+      <div class="edit-info">Activity Friends</div>
+        <ul class="edit-input">
+          <!-- {{#each friend in model.activityFriends}}
+            {{log friend}}
+          {{/each}} -->
+          {{model.activityFriends}}
+        </ul>
+      <div class="edit-info">Activity Notes</div>
+       <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activityNotes readonly=isEditing}}</div>
       <div>
-        <button {{action "updateAccount"}}>Edit</button>
-        <button {{action "updateAccount"}}>Save</button>
-        <button {{action "updateAccount"}}>Delete</button>
-        <button {{action "updateAccount"}}>Cancel</button>
-        <button {{action "updateAccount"}}>Leave Activity</button>
-      </div>
+      <button {{action "edit"}}>Edit</button>
+      <button {{action "save"}}>Save</button>
+      <button {{action "updateAccount"}}>Delete</button>
+      <button {{action "cancel"}}>Cancel</button>
+      <button {{action "updateAccount"}}>Leave Activity</button>
     </div>
   </div>
+</div>
 
-  <div class="right-container">
-    <div class="map-container">
-      <div class="container-title">Explore the swamp rabbit trail!</div>
-      <iframe frameBorder='0'src='http://goo.gl/921Frn'></iframe>
-    </div>
+<div class="right-container">
+  <div class="map-container">
+    <div class="container-title">Explore the swamp rabbit trail!</div>
+    <iframe frameBorder='0'src='http://goo.gl/921Frn'></iframe>
   </div>
+</div>
 
 </div>
+
+{{outlet}}
