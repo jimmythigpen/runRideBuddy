@@ -30,16 +30,7 @@
         </ul>
 
         <!-- ember-cli-typeahead -->
-          {{twitter-typeahead
-            content=model.user
-            displayKey="firstName"
-           }}
-
-           <!-- filterContent=typeahead
-           valueToken="friend"
-           footerTemplate=handlebarsFooterTemplate
-           emptyTemplate=handlebarsEmptyTemplate
-           on-select-without-match="addFriend" -->
+        {{type-ahead class="typeahead" placeholder="Search Friends" name="firstName" highlight=true content=model.user targetAction="typeAheadTargetAction"}}
 
       <div class="edit-info">Activity Notes</div>
        <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activity.activityNotes readonly=isEditing}}</div>

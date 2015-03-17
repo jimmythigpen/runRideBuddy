@@ -21,11 +21,6 @@ export default Ember.Controller.extend({
     }
   },
 
-    typeahead: function() {
-      console.log('YO!');
-},
-
-
   isEditing: true,
 
 });

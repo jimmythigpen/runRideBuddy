@@ -9,10 +9,9 @@ export default Ember.Object.extend({
     return this.store.save('activity', this);
   },
 
-  addFriend: function(friend) {
-    console.log(friend);
+  // addFriend: function(friend) {
   // ajax with addRelation with serializeFriend(friend)
-  },
+  // },
 
   // removeFriend: function(friend) {
   // ajax with removeRelation with serializeFriend(friend)
@@ -36,6 +35,7 @@ export default Ember.Object.extend({
   },
 
   toJSON: function(){
+    console.log(this.getProperties('activityOwner.id'));
     var data = this.getProperties('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
     // var data = Ember.Object.create(this);
     var ownerId = this.get('activityOwner.id');
