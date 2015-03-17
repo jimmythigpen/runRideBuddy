@@ -9,13 +9,13 @@ export default Ember.Object.extend({
     return this.store.save('activity', this);
   },
 
-  addFriend: function(friend) {
-    // ajax with addRelation with serializeFriend(friend)
-  },
+  // addFriend: function(friend) {
+  // ajax with addRelation with serializeFriend(friend)
+  // },
 
-  removeFriend: function(friend) {
-    // ajax with removeRelation with serializeFriend(friend)
-  },
+  // removeFriend: function(friend) {
+  // ajax with removeRelation with serializeFriend(friend)
+  // },
 
   serializeFriend: function(friend) {
     return {__type: "Pointer", className: "_User", objectId: friend.id};
@@ -45,13 +45,10 @@ export default Ember.Object.extend({
         objectId: ownerId
       });
     }
-
-    // console.log(new Date(this.getProperties('activityDate')));
     Ember.set(data, 'activityDate', {
       __type: "Date",
       iso: (new Date(this.get('activityDate'))).toISOString()
     });
-
     return data;
   }
 });

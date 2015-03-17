@@ -4,12 +4,10 @@
   <div class="user-activity-container">
     <div class="container-title">Activity Details</div>
       <div class="edit-info">Activity Owner</div>
-      <!-- {{log model.activityOwner}} -->
         <div>{{input placeholder="activity owner" class="edit-input" value=model.activityOwner.firstName readonly=true}}</div>
       <div class="edit-info">Activity Name</div>
         <div>{{input placeholder="activity name" class="edit-input" value=model.activityName readonly=isEditing}}</div>
       <div class="edit-info">Activity Date</div>
-        <!-- {{log model.activityDate.iso}} -->
         <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activityDate readonly=isEditing autocomplete=on}}</div>
       <div class="edit-info">Activity Type</div>
        <div class="edit-input">
@@ -26,18 +24,31 @@
        <div class="edit-input">Start: {{view "select" content=startMarker value=model.activityStart disabled=isEditing}} Finish: {{view "select" content=finishMarker value=model.activityFinish disabled=isEditing}}</div>
       <div class="edit-info">Activity Friends</div>
         <ul class="edit-input">
-          {{#each friend in model.activityFriends}}
+            {{#each friend in model.activityFriends}}
             <li>{{friend.firstName}}{{friend.lastName}}</li>
           {{/each}}
         </ul>
+
+        <!-- ember-cli-typeahead -->
+          {{log model.activityFriends}}
+          {{twitter-typeahead
+            content=model.activityFriends
+            filterContent=filterContentFn
+            displayKey="firstName"
+            valueToken="propertyForValue"
+            footerTemplate=handlebarsFooterTemplate
+            emptyTemplate=handlebarsEmptyTemplate
+            on-select-without-match="ActionToRunWhenEnterIsHitWithoutAMatch"
+           }}
+
       <div class="edit-info">Activity Notes</div>
        <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activityNotes readonly=isEditing}}</div>
       <div>
       <button {{action "edit"}}>Edit</button>
       <button {{action "save"}}>Save</button>
-      <button {{action "updateAccount"}}>Delete</button>
+      <button {{action "delete"}}>Delete</button>
       <button {{action "cancel"}}>Cancel</button>
-      <button {{action "updateAccount"}}>Leave Activity</button>
+      <button {{action "leave"}}>Leave Activity</button>
     </div>
   </div>
 </div>

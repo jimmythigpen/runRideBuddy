@@ -10,5 +10,13 @@ export default Ember.Object.extend({
       delete user.sessionToken;
       return user;
     });
-  }
+  },
+
+  findAll: function(){
+    return ajax("https://api.parse.com/1/users").then(function(response){
+       return response.results.map(function(response) {
+         console.log(response);
+       });
+     });
+   },
 });

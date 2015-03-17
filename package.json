@@ -31,10 +31,14 @@
     "ember-cli-qunit": "0.3.8",
     "ember-cli-sass": "^3.1.0",
     "ember-cli-simple-auth": "0.7.3",
+    "ember-cli-typeahead": "1.0.2",
     "ember-cli-uglify": "1.0.1",
     "ember-export-application-global": "^1.0.2",
     "ember-moment": "1.1.1",
     "express": "^4.8.5",
     "glob": "^4.0.5"
+  },
+  "dependencies": {
+    "ember-cli-twitter-typeahead": "0.0.6"
   }
 }
