@@ -13,9 +13,18 @@ export default Ember.Controller.extend({
     },
 
     save: function() {
-      this.get('model').save();
+      this.get('model.activity').save();
+    },
+
+    addFriend: function() {
+      this.get('friend');
     }
   },
+
+    typeahead: function() {
+      console.log('YO!');
+},
+
 
   isEditing: true,
 

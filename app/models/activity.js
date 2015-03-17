@@ -9,9 +9,10 @@ export default Ember.Object.extend({
     return this.store.save('activity', this);
   },
 
-  // addFriend: function(friend) {
+  addFriend: function(friend) {
+    console.log(friend);
   // ajax with addRelation with serializeFriend(friend)
-  // },
+  },
 
   // removeFriend: function(friend) {
   // ajax with removeRelation with serializeFriend(friend)

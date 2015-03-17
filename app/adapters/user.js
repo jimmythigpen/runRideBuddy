@@ -14,8 +14,12 @@ export default Ember.Object.extend({
 
   findAll: function(){
     return ajax("https://api.parse.com/1/users").then(function(response){
-       return response.results.map(function(response) {
-         console.log(response);
+       return response.results.map(function(user) {
+         user.id = user.objectId;
+         delete user.objectId;
+         delete user.sessionToken;
+        //  console.log(user);
+         return user;
        });
      });
    },

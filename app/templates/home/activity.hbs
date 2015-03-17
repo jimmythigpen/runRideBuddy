@@ -4,45 +4,45 @@
   <div class="user-activity-container">
     <div class="container-title">Activity Details</div>
       <div class="edit-info">Activity Owner</div>
-        <div>{{input placeholder="activity owner" class="edit-input" value=model.activityOwner.firstName readonly=true}}</div>
+        <div>{{input placeholder="activity owner" class="edit-input" value=model.activity.activityOwner.firstName readonly=true}}</div>
       <div class="edit-info">Activity Name</div>
         <div>{{input placeholder="activity name" class="edit-input" value=model.activity.activityName readonly=isEditing}}</div>
       <div class="edit-info">Activity Date</div>
-        <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activityDate readonly=isEditing autocomplete=on}}</div>
+        <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activity.activityDate readonly=isEditing autocomplete=on}}</div>
       <div class="edit-info">Activity Type</div>
        <div class="edit-input">
          <div class="mx-button">
-          {{type-buttons name="typeSelect" selectionBinding="model.activityType" value="Run" id="type1" disabled=isEditing}}
+          {{type-buttons name="typeSelect" selectionBinding="model.activity.activityType" value="Run" id="type1" disabled=isEditing}}
           <label for="type1">Run</label>
          </div>
         <div class="mx-button">
-          {{type-buttons name="typeSelect" selectionBinding="model.activityType" value="Ride" id="type2" disabled=isEditing}}
+          {{type-buttons name="typeSelect" selectionBinding="model.activity.activityType" value="Ride" id="type2" disabled=isEditing}}
           <label for="type2">Ride</label>
         </div>
        </div>
       <div class="edit-info">Activity Way-Points</div>
-       <div class="edit-input">Start: {{view "select" content=startMarker value=model.activityStart disabled=isEditing}} Finish: {{view "select" content=finishMarker value=model.activityFinish disabled=isEditing}}</div>
+       <div class="edit-input">Start: {{view "select" content=startMarker value=model.activity.activityStart disabled=isEditing}} Finish: {{view "select" content=finishMarker value=model.activity.activityFinish disabled=isEditing}}</div>
       <div class="edit-info">Activity Friends</div>
         <ul class="edit-input">
-            {{#each friend in model.activityFriends}}
+            {{#each friend in model.activity.activityFriends}}
             <li>{{friend.firstName}}{{friend.lastName}}</li>
           {{/each}}
         </ul>
 
         <!-- ember-cli-typeahead -->
-          {{log model.activityFriends}}
           {{twitter-typeahead
-            content=model.activityFriends
-            filterContent=filterContentFn
+            content=model.user
             displayKey="firstName"
-            valueToken="propertyForValue"
-            footerTemplate=handlebarsFooterTemplate
-            emptyTemplate=handlebarsEmptyTemplate
-            on-select-without-match="ActionToRunWhenEnterIsHitWithoutAMatch"
            }}
 
+           <!-- filterContent=typeahead
+           valueToken="friend"
+           footerTemplate=handlebarsFooterTemplate
+           emptyTemplate=handlebarsEmptyTemplate
+           on-select-without-match="addFriend" -->
+
       <div class="edit-info">Activity Notes</div>
-       <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activityNotes readonly=isEditing}}</div>
+       <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activity.activityNotes readonly=isEditing}}</div>
       <div>
       <button {{action "edit"}}>Edit</button>
       <button {{action "save"}}>Save</button>
