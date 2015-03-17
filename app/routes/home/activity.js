@@ -11,7 +11,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function(params) {
     return new Ember.RSVP.hash({
       activity: this.store.find('activity', params.activity_id),
-      user: this.store.findAll('user'),
+      users: this.store.findAll('user'),
     });
   }
 });

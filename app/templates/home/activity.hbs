@@ -30,7 +30,8 @@
         </ul>
 
         <!-- ember-cli-typeahead -->
-        {{type-ahead class="typeahead" placeholder="Search Friends" name="firstName" highlight=true content=model.user targetAction="typeAheadTargetAction"}}
+        {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName"}}
+
 
       <div class="edit-info">Activity Notes</div>
        <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activity.activityNotes readonly=isEditing}}</div>

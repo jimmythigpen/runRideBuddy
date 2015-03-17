@@ -43,6 +43,8 @@
         </div>
         <div>
           <div>Friends</div>
+          <!-- ember-cli-typeahead -->
+          {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName"}}
           {{input type="text" placeholder="Search by name of email" value=searchFriends}}
           <button {{action "addFriend"}}>Add Friend</button>
         </div>
