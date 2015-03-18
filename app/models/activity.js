@@ -22,6 +22,11 @@ export default Ember.Object.extend({
   // },
 
   serializeFriend: function(friend) {
+    if (friend.id) {
+    friend.id = friend.id;
+  } else {
+    friend.id = friend.objectId;
+  }
     return {__type: "Pointer", className: "_User", objectId: friend.id};
   },
 
@@ -45,6 +50,20 @@ export default Ember.Object.extend({
       data: JSON.stringify({
         activityFriends: {
           __op: "AddRelation",
+          objects: [this.serializeFriend(friend)]
+        }
+      })
+    });
+  },
+
+  removeFriend: function(friend) {
+    console.log(friend);
+    this.get('activityFriends').removeObject(friend);
+    return ajax("https://api.parse.com/1/classes/activity/" + this.get('id'), {
+      type: "PUT",
+      data: JSON.stringify({
+        activityFriends: {
+          __op: "RemoveRelation",
           objects: [this.serializeFriend(friend)]
         }
       })

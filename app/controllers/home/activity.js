@@ -17,10 +17,14 @@ export default Ember.Controller.extend({
     },
 
     addFriend: function() {
-      console.log('push in controller');
       var activity = this.get('model.activity');
       var friend = this.get('selectedFriend');
       activity.addFriend(friend);
+    },
+
+    removeFriend: function(friend) {
+      var activity = this.get('model.activity');
+      activity.removeFriend(friend);
     },
 
     delete: function() {

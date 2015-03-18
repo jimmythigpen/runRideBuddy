@@ -2,9 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function(){
-    console.log('create route');
-    console.log(this.get('session.content'));
-    console.log(this.get('session.currentUser'));
+    // console.log(this.get('session.content'));
+    // console.log(this.get('session.currentUser'));
      return this.store.createRecord('activity', {
        activityOwner: this.get('session.currentUser')
      });

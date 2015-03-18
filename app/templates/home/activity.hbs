@@ -29,8 +29,8 @@
          <div class="edit-info">Activity Friends</div>
            <ul class="edit-input">
                {{#each friend in model.activity.activityFriends}}
-               <li>{{friend.firstName}}{{friend.lastName}}</li>
-             {{/each}}
+               <li>{{friend.firstName}} {{friend.lastName}} <button class="remove-friend" {{action "removeFriend" friend}}>X</button></li>
+               {{/each}}
            </ul>
 
         <!-- ember-cli-typeahead -->
