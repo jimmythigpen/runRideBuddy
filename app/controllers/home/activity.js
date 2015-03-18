@@ -14,7 +14,20 @@ export default Ember.Controller.extend({
 
     save: function() {
       this.get('model.activity').save();
-    }
+    },
+
+    addFriend: function() {
+      console.log('push in controller');
+      var activity = this.get('model.activity');
+      var friend = this.get('selectedFriend');
+      activity.addFriend(friend);
+    },
+
+    delete: function() {
+      this.get('model.activity').destroy().then(function(){
+        this.transitionToRoute('home.index');
+      }.bind(this));
+    },
   },
 
   isEditing: true,

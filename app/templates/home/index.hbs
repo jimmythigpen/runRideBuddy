@@ -1,29 +1,29 @@
 <div class="body-container">
 
 <div class="left-container">
-
-  <div class="user-activity-container">
+  <div class="button-container">
     <div class="container-title">Runs & Rides</div>
-      <ul class="activity-list">
-        {{#each activity in model}}
-        <li class="activity-list-item">
-        <div class="activity-name">{{activity.activityName}}</div>
-        <div class="activity-preview-info">{{activity.activityOwner.firstName}} {{activity.activityOwner.lastName}}</div>
-        <div class="activity-preview-info">3.5 Miles</div>
-        <div class="activity-preview-info">{{activity.activityType}}</div>
-        <div class="activity-preview-info">{{moment activity.activityDate.iso}}</div>
-        {{#link-to 'home.activity' activity.id}}
-          <button class="details-button">Details</button>
-        {{/link-to}}
-        </li>
-        {{/each}}
-      </ul>
-      {{#link-to 'home.create'}}
-        <button>Create New</button>
-      {{/link-to}}
+  <div class="user-activity-container">
+        <ul class="activity-list">
+          {{#each activity in model}}
+          <li class="activity-list-item">
+          <div class="activity-name">{{activity.activityName}}</div>
+          <div class="activity-preview-info">{{activity.activityOwner.firstName}} {{activity.activityOwner.lastName}}</div>
+          <div class="activity-preview-info">3.5 Miles</div>
+          <div class="activity-preview-info">{{activity.activityType}}</div>
+          <div class="activity-preview-info">{{moment activity.activityDate.iso}}</div>
+          {{#link-to 'home.activity' activity.id}}
+            <button class="details-button">Details</button>
+          {{/link-to}}
+          </li>
+          {{/each}}
+        </ul>
+    </div>
+    {{#link-to 'home.create'}}
+      <button class="create-new-button">Create New</button>
+    {{/link-to}}
     </div>
   </div>
-
   <div class="right-container">
     <div class="map-container">
       <div class="container-title">Explore the swamp rabbit trail!</div>

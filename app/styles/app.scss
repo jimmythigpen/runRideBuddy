@@ -111,14 +111,14 @@ header {
 }
 
 .left-container {
-  @include span-columns(3.5, block-collapse);
+  @include span-columns(4, block-collapse);
   padding-left: 10px;
   padding-right: 1px;
   margin-top: 10px;
 }
 
 .right-container {
-  @include span-columns(8.5, block-collapse);
+  @include span-columns(8, block-collapse);
   padding-right: 10px;
   padding-left: 1px;
   margin-top: 10px;
@@ -139,7 +139,27 @@ iframe {
   background-color: $primary;
 }
 
+.button-container {
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  padding: 5px;
+  height: 575px;
+  background-color: $primary;
+}
+
 .user-activity-container {
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  padding: 5px;
+  height: 495px;
+  background-color: $primary;
+  overflow: scroll;
+}
+
+.user-activity-container-alt {
   border-radius: 3px;
   border: 1px solid;
   border-color: #e5e6e9 #dfe0e4 #d0d1d5;
@@ -265,6 +285,30 @@ iframe {
   }
 }
 
+.create-new-button {
+  margin: 5px auto;
+  color: #fafafa;
+  cursor: pointer;
+  display: block;
+  height: 35px;
+  width: 100%;
+  background: #9ed05c;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
+
+  &:hover {
+    background: $secondary;
+  }
+
+  &:active {
+    background: $secondary-dark;
+  }
+}
+
+
 .login-image {
   height: 100px;
   text-align: center;
@@ -280,9 +324,9 @@ iframe {
 
 .edit-input {
   display: block;
-  height: 36px;
+  /* height: 36px; */
   width: 100%;
-  margin: 0 auto;
+  margin: .25em auto;
   background-color: $primary;
   color: $secondary-text;
   border-top: none;
@@ -291,6 +335,7 @@ iframe {
   border-left: none;
   font-size: 16px;
   outline: none;
+  list-style: none;
   transition: all 0.15s ease-in-out 0s;
 
   &:focus {
@@ -304,6 +349,15 @@ iframe {
   border: none;
   font-size: 14px;
   color: $secondary-text;
+}
+
+.twitter-typeahead {
+  font-size: 16px;
+  width: 100%;
+}
+
+.typeahead {
+  width: 100%;
 }
 
 //

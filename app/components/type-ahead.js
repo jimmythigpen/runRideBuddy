@@ -21,25 +21,25 @@ export default Ember.TextField.extend({
  highlight: false,
  hint: true,
  minLength: 1,
- autofocus: true,
+ autofocus: false,
  _typeahead: null,
  selection: null,
 
  focusOut: function(){
-   this.sendAction('targetAction', "focus-out");
+   this.sendAction('targetAction');
  },
 
- focusIn: function(){
-   this.sendAction('targetAction', "focus-in");
- },
-
- keyUp: function(){
-   this.sendAction('targetAction', "key-up");
- },
-
- keyDown: function(){
-   this.sendAction('targetAction', "key-down");
- },
+ // focusIn: function(){
+ //   this.sendAction('targetAction', "focus-in");
+ // },
+ //
+ // keyUp: function(){
+ //   this.sendAction('targetAction', "key-up");
+ // },
+ //
+ // keyDown: function(){
+ //   this.sendAction('targetAction', "key-down");
+ // },
 
  /* Can add more event catchers here */
 
@@ -63,12 +63,12 @@ export default Ember.TextField.extend({
 
    // Set selected object
    t.on('typeahead:selected', function(event, item) {
-     Ember.debug("Setting suggestion");
+    //  Ember.debug("Setting suggestion");
      that.set('selection', item.obj);
    });
 
    t.on('typeahead:autocompleted', function(event, item) {
-     Ember.debug("Setting suggestion");
+    //  Ember.debug("Setting suggestion");
      that.set('selection', item.obj);
    });
  },

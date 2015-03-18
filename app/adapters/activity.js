@@ -49,7 +49,6 @@ export default Ember.Object.extend({
         }).then(function(response){
           record.id = response.objectId;
           record.createdAt = response.createdAt;
-
           return ajax({
             url:  "https://api.parse.com/1/classes/activity/" + response.objectId,
             type: "PUT",
@@ -61,5 +60,12 @@ export default Ember.Object.extend({
           return record;
         });
       }
-  }
+  },
+
+    destroy: function(name, record){
+      return ajax({
+        url: "https://api.parse.com/1/classes/activity/" + record.id,
+        type: "DELETE",
+      });
+    },
 });

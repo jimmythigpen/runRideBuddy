@@ -1,7 +1,7 @@
 <div class="body-container">
 
 <div class="left-container">
-  <div class="user-activity-container">
+  <div class="user-activity-container-alt">
     <div class="container-title">Activity Details</div>
       <div class="edit-info">Activity Owner</div>
         <div>{{input placeholder="activity owner" class="edit-input" value=model.activity.activityOwner.firstName readonly=true}}</div>
@@ -22,19 +22,20 @@
        </div>
       <div class="edit-info">Activity Way-Points</div>
        <div class="edit-input">Start: {{view "select" content=startMarker value=model.activity.activityStart disabled=isEditing}} Finish: {{view "select" content=finishMarker value=model.activity.activityFinish disabled=isEditing}}</div>
-      <div class="edit-info">Activity Friends</div>
-        <ul class="edit-input">
-            {{#each friend in model.activity.activityFriends}}
-            <li>{{friend.firstName}}{{friend.lastName}}</li>
-          {{/each}}
-        </ul>
+
+        <div class="edit-info">Activity Notes</div>
+         <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activity.activityNotes readonly=isEditing}}</div>
+
+         <div class="edit-info">Activity Friends</div>
+           <ul class="edit-input">
+               {{#each friend in model.activity.activityFriends}}
+               <li>{{friend.firstName}}{{friend.lastName}}</li>
+             {{/each}}
+           </ul>
 
         <!-- ember-cli-typeahead -->
-        {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName"}}
+        {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend}}
 
-
-      <div class="edit-info">Activity Notes</div>
-       <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activity.activityNotes readonly=isEditing}}</div>
       <div>
       <button {{action "edit"}}>Edit</button>
       <button {{action "save"}}>Save</button>

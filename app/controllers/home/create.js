@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
 
   actions: {
     saveNew: function(){
-      console.log(this.get('model'));
+      // console.log(this.get('model'));
       this.get('model').save();
     }
   }

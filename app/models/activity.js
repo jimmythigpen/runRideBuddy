@@ -1,3 +1,4 @@
+import ajax from 'ic-ajax';
 import Ember from 'ember';
 
 export default Ember.Object.extend({
@@ -9,8 +10,11 @@ export default Ember.Object.extend({
     return this.store.save('activity', this);
   },
 
-  // addFriend: function(friend) {
   // ajax with addRelation with serializeFriend(friend)
+  // pushObject: function(friend) {
+  //   console.log('push in model');
+  //   return this.store.pushObject('activity.activityFriends', friend);
+  //
   // },
 
   // removeFriend: function(friend) {
@@ -34,8 +38,21 @@ export default Ember.Object.extend({
     };
   },
 
+  addFriend: function(friend) {
+    this.get('activityFriends').pushObject(friend);
+    return ajax("https://api.parse.com/1/classes/activity/" + this.get('id'), {
+      type: "PUT",
+      data: JSON.stringify({
+        activityFriends: {
+          __op: "AddRelation",
+          objects: [this.serializeFriend(friend)]
+        }
+      })
+    });
+  },
+
   toJSON: function(){
-    console.log(this.getProperties('activityOwner.id'));
+    // console.log(this.getProperties('activityOwner.id'));
     var data = this.getProperties('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
     // var data = Ember.Object.create(this);
     var ownerId = this.get('activityOwner.id');

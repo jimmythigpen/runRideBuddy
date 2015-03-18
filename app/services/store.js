@@ -51,10 +51,6 @@ export default Ember.Object.extend({
     }.bind(this));
   },
 
-  push: function(type, record) {
-    return identityMap.set(type, record.id, record);
-  },
-
   createRecord: function(type, properties){
     var klass = this.modelFor(type);
     return klass.create(properties);

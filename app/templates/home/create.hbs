@@ -1,7 +1,7 @@
 <div class="body-container">
 
 <div class="left-container">
-  <div class="user-activity-container">
+  <div class="user-activity-container-alt">
     <div class="container-title">Create New</div>
   <form>
     <div>
@@ -41,15 +41,14 @@
         <div>
         {{view "select" content=finishMarker value=model.activityFinish prompt="Select Finish Mile Marker"}}
         </div>
+        <div>Notes</div>
+        <div>{{textarea placeholder="Notes" value=model.activityNotes}}</div>
         <div>
           <div>Friends</div>
           <!-- ember-cli-typeahead -->
-          {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName"}}
-          {{input type="text" placeholder="Search by name of email" value=searchFriends}}
-          <button {{action "addFriend"}}>Add Friend</button>
+          {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="pushObject" selection=selectedFriend}}
         </div>
-        <div>Notes</div>
-        {{textarea placeholder="Notes" value=model.activityNotes}}
+
         {{#link-to 'home'}}
           <button {{action "saveNew"}}>Save</button>
         {{/link-to}}
