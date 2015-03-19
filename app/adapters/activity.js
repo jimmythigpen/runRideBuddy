@@ -9,8 +9,6 @@ export default Ember.Object.extend({
       activity.id = activity.objectId;
       activity.activityDate = activity.activityDate.iso;
       delete activity.objectId;
-      return activity;
-    }).then(function(){
       return ajax("https://api.parse.com/1/users" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"activity","objectId":'+ '\"' + id + '\"' + '},"key":"activityFriends"}}}');
     }).then(function(response){
       activity.activityFriends = response.results;

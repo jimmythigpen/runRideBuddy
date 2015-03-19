@@ -1,15 +1,5 @@
 import Ember from 'ember';
+import Model from 'ember-magic-man/model';
 
-export default Ember.Object.extend({
-  destroy: function(){
-    this.store.destroy('user', this);
-  },
-
-  save: function(){
-    this.store.save('user', this);
-  },
-
-  toJSON: function(){
-    return this;
-  }
+export default Model.extend({
 });

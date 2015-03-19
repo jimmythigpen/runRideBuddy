@@ -1,25 +1,8 @@
 import ajax from 'ic-ajax';
 import Ember from 'ember';
+import Model from 'ember-magic-man/model';
 
-export default Ember.Object.extend({
-  destroy: function(){
-    return this.store.destroy('activity', this);
-  },
-
-  save: function(){
-    return this.store.save('activity', this);
-  },
-
-  // ajax with addRelation with serializeFriend(friend)
-  // pushObject: function(friend) {
-  //   console.log('push in model');
-  //   return this.store.pushObject('activity.activityFriends', friend);
-  //
-  // },
-
-  // removeFriend: function(friend) {
-  // ajax with removeRelation with serializeFriend(friend)
-  // },
+export default Model.extend({
 
   serializeFriend: function(friend) {
     if (friend.id) {

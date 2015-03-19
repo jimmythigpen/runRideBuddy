@@ -14,9 +14,15 @@ module.exports = function(environment) {
     },
 
     'simple-auth': {
+      authorizer: 'authorizer:parse',
+      crossOriginWhitelist: ['https://api.parse.com'],
       routeAfterAuthentication: 'home'
     },
 
+    parseKeys: {
+      applicationId: "WTSinPP7KDLUcIP00LXJ3NqAb3NPOAs0eBAs65mi",
+      restApi: "bwC5mdCVn0ExQHpeyrfXjBGLttgKCWK8Hv7eqVzL"
+    },
 
     APP: {
       // Here you can pass flags/options to your application instance
