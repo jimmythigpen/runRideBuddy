@@ -14,8 +14,6 @@ export default Model.extend({
   },
 
   serializeFriends: function(friends){
-    // console.log(friends);
-    // console.log(friends.map(this.serializeFriend));
     return {
       activityFriends: {
         __op: "AddRelation",
@@ -39,7 +37,6 @@ export default Model.extend({
   },
 
   removeFriend: function(friend) {
-    console.log(friend);
     this.get('activityFriends').removeObject(friend);
     return ajax("https://api.parse.com/1/classes/activity/" + this.get('id'), {
       type: "PUT",
@@ -53,10 +50,7 @@ export default Model.extend({
   },
 
   toJSON: function(){
-    // console.log(this.getProperties('activityDate'));
-    // console.log(this.getProperties('activityOwner.id'));
     var data = this.getProperties('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
-    // var data = Ember.Object.create(this);
     var ownerId = this.get('activityOwner.id');
     if(ownerId) {
     Ember.set(data, 'activityOwner', {

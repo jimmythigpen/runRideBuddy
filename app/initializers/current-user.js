@@ -7,9 +7,8 @@ export function initialize(container, application) {
   application.inject('adapter', 'session', 'simple-auth-session:main');
 
   Session.reopen({
-    setCurrentUser: function() {
+    setCurrentUser: Ember.immediateObserver('sessionToken', function() {
       var token = this.get('sessionToken');
-
       if (this.get('isAuthenticated') && !Ember.isEmpty(token)) {
         var store = container.lookup('store:main');
         ajax('https://api.parse.com/1/users/me').then(function(response) {
@@ -20,7 +19,7 @@ export function initialize(container, application) {
           this.set('currentUser', user);
         }.bind(this));
       }
-    }.observes('sessionToken')
+    })
   });
 }
 

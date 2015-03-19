@@ -17,8 +17,10 @@ export default Ember.Object.extend({
   },
 
     findAll: function(){
-    var currentUser = this.session.content.objectId;
-      //  return ajax("https://api.parse.com/1/classes/activity" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '},"key":"joinedActivities"}}}' + "&include=activityOwner").then(function(response){
+    var currentUser = this.get('session.currentUser.id');
+    // console.log(this.session.content.objectId);
+    // var currentUser = this.session.content.objectId;
+    //  return ajax("https://api.parse.com/1/classes/activity" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '},"key":"joinedActivities"}}}' + "&include=activityOwner").then(function(response){
       return ajax("https://api.parse.com/1/classes/activity" + '?where={"activityFriends":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '}}').then(function(response){
          return response.results.map(function(activity) {
            activity.id = activity.objectId;
