@@ -52,7 +52,7 @@ export default Ember.Object.extend({
           return ajax({
             url:  "https://api.parse.com/1/classes/activity/" + response.objectId,
             type: "PUT",
-            data: JSON.stringify(record.serializeFriends()),
+            data: JSON.stringify(record.serializeFriends(record.activityFriends)),
             contentType: 'application/json'
           });
         }).then(function(response) {

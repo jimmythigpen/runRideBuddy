@@ -30,15 +30,14 @@ export default Ember.Object.extend({
     return {__type: "Pointer", className: "_User", objectId: friend.id};
   },
 
-  serializeFriends: function(){
+  serializeFriends: function(friends){
+    // console.log(friends);
+    // console.log(friends.map(this.serializeFriend));
     return {
       activityFriends: {
         __op: "AddRelation",
-        objects: [
-          {__type:"Pointer",className:"_User",objectId: "ZgsnF0hE4t"},
-          {__type:"Pointer",className:"_User",objectId: "zbywJVtVHS"}
-        ]
-        // objects: this.get('activityFriends').map(this.serializeFriend)
+        objects: friends.map(this.serializeFriend)
+
       }
     };
   },
@@ -71,6 +70,7 @@ export default Ember.Object.extend({
   },
 
   toJSON: function(){
+    // console.log(this.getProperties('activityDate'));
     // console.log(this.getProperties('activityOwner.id'));
     var data = this.getProperties('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
     // var data = Ember.Object.create(this);
