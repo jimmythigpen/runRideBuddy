@@ -9,9 +9,9 @@
           <li class="activity-list-item">
           <div class="activity-name">{{activity.activityName}}</div>
           <div class="activity-preview-info">{{activity.activityOwner.firstName}} {{activity.activityOwner.lastName}}</div>
-          <div class="activity-preview-info">3.5 Miles</div>
+          <div class="activity-preview-info">{{activity.distance}} Miles</div>
           <div class="activity-preview-info">{{activity.activityType}}</div>
-          <div class="activity-preview-info">{{moment activity.activityDate.iso}}</div>
+          <div class="activity-preview-info">{{moment activity.activityDate}}</div>
           {{#link-to 'home.activity' activity.id}}
             <button class="details-button">Details</button>
           {{/link-to}}

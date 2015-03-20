@@ -8,7 +8,8 @@
       <div class="edit-info">Activity Name</div>
         <div>{{input placeholder="activity name" class="edit-input" value=model.activity.activityName readonly=isEditing}}</div>
       <div class="edit-info">Activity Date</div>
-        <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activity.activityDate readonly=isEditing autocomplete=on}}</div>
+      <!-- {{log model.activity.activityDate}} -->
+        <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activity.activityDate}}</div>
       <div class="edit-info">Activity Type</div>
        <div class="edit-input">
          <div class="mx-button">
@@ -28,8 +29,11 @@
 
          <div class="edit-info">Activity Friends</div>
            <ul class="edit-input">
+
                {{#each friend in model.activity.activityFriends}}
+
                <li>{{friend.firstName}} {{friend.lastName}} <button class="remove-friend" {{action "removeFriend" friend}}>X</button></li>
+
                {{/each}}
            </ul>
 
@@ -37,12 +41,25 @@
         {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend}}
 
       <div>
+
+      {{#if owner}}
+
       <button {{action "edit"}}>Edit</button>
       <button {{action "save"}}>Save</button>
       <button {{action "delete"}}>Delete</button>
-      <button {{action "cancel"}}>Cancel</button>
+
+      {{#link-to 'home'}}
+        <button>Cancel</button>
+      {{/link-to}}
+
+      {{else}}
+
       <button {{action "leave"}}>Leave Activity</button>
-    </div>
+
+      {{/if}}
+
+      </div>
+
   </div>
 </div>
 

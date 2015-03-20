@@ -7,7 +7,8 @@ export default Ember.Object.extend({
     return ajax("https://api.parse.com/1/classes/activity/" + id + "?include=activityOwner").then(function(response){
       activity = response;
       activity.id = activity.objectId;
-      activity.activityDate = activity.activityDate.iso;
+      var date = activity.activityDate.iso;
+      activity.activityDate = date.substring(0, date.length - 1);
       delete activity.objectId;
       return ajax("https://api.parse.com/1/users" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"activity","objectId":'+ '\"' + id + '\"' + '},"key":"activityFriends"}}}');
     }).then(function(response){
@@ -18,13 +19,18 @@ export default Ember.Object.extend({
 
     findAll: function(){
     var currentUser = this.get('session.currentUser.id');
-    // console.log(this.session.content.objectId);
-    // var currentUser = this.session.content.objectId;
     //  return ajax("https://api.parse.com/1/classes/activity" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '},"key":"joinedActivities"}}}' + "&include=activityOwner").then(function(response){
       return ajax("https://api.parse.com/1/classes/activity" + '?where={"activityFriends":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '}}').then(function(response){
          return response.results.map(function(activity) {
            activity.id = activity.objectId;
            delete activity.objectId;
+           var date = activity.activityDate.iso;
+           activity.activityDate = date.substring(0, date.length - 1);
+           if (activity.activityStart < activity.activityFinish) {
+             activity.distance = activity.activityFinish - activity.activityStart;
+           } else {
+             activity.distance = activity.activityStart -activity.activityFinish;
+           }
            return activity;
          });
        });

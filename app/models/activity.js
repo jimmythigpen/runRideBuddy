@@ -50,6 +50,7 @@ export default Model.extend({
   },
 
   toJSON: function(){
+    // console.log(this.get('activityDate'));
     var data = this.getProperties('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
     var ownerId = this.get('activityOwner.id');
     if(ownerId) {
