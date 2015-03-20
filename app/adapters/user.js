@@ -18,7 +18,6 @@ export default Ember.Object.extend({
          user.id = user.objectId;
          delete user.objectId;
          delete user.sessionToken;
-        //  console.log(user);
          return user;
        });
      });

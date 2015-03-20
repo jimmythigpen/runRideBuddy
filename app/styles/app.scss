@@ -324,7 +324,7 @@ iframe {
 
 .edit-input {
   display: block;
-  /* height: 36px; */
+  padding-bottom: .25em;
   width: 100%;
   margin: .25em auto;
   background-color: $primary;
@@ -338,7 +338,7 @@ iframe {
   list-style: none;
   transition: all 0.15s ease-in-out 0s;
 
-  &:focus {
+  &:hover {
     border-color: $secondary;
   }
 }
@@ -358,6 +358,17 @@ iframe {
 
 .typeahead {
   width: 100%;
+}
+
+select {
+  font-size: 16px;
+  font-family: $font-stack;
+  border: 0;
+  outline: none;
+
+  &:disabled {
+    color: $hint-text;
+  }
 }
 
 //
@@ -444,6 +455,7 @@ iframe {
   .right-container {
     @include span-columns(12, block-collapse);
     padding-left: 10px;
+    margin-bottom: 10px;
   }
 
 }

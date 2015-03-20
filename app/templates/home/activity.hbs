@@ -2,14 +2,18 @@
 
 <div class="left-container">
   <div class="user-activity-container-alt">
-    <div class="container-title">Activity Details</div>
+    {{#if isEditing}}
+    <div class="container-title"><span>Activity Details</span></div>
+    {{else}}
+    <div class="container-title"><span>Now Editing</span><h5>save or cancel when done</h5></div>
+    {{/if}}
       <div class="edit-info">Activity Owner</div>
-        <div>{{input placeholder="activity owner" class="edit-input" value=model.activity.activityOwner.firstName readonly=true}}</div>
+        <div>{{input placeholder="activity owner" class="edit-input" value=model.activity.activityOwner.firstName disabled=isEditing}}</div>
       <div class="edit-info">Activity Name</div>
-        <div>{{input placeholder="activity name" class="edit-input" value=model.activity.activityName readonly=isEditing}}</div>
+        <div>{{input placeholder="activity name" class="edit-input" value=model.activity.activityName disabled=isEditing}}</div>
       <div class="edit-info">Activity Date</div>
       <!-- {{log model.activity.activityDate}} -->
-        <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activity.activityDate}}</div>
+        <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activity.activityDate disabled=isEditing}}</div>
       <div class="edit-info">Activity Type</div>
        <div class="edit-input">
          <div class="mx-button">
@@ -25,20 +29,28 @@
        <div class="edit-input">Start: {{view "select" content=startMarker value=model.activity.activityStart disabled=isEditing}} Finish: {{view "select" content=finishMarker value=model.activity.activityFinish disabled=isEditing}}</div>
 
         <div class="edit-info">Activity Notes</div>
-         <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activity.activityNotes readonly=isEditing}}</div>
+         <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activity.activityNotes disabled=isEditing}}</div>
 
          <div class="edit-info">Activity Friends</div>
            <ul class="edit-input">
 
                {{#each friend in model.activity.activityFriends}}
 
-               <li>{{friend.firstName}} {{friend.lastName}} <button class="remove-friend" {{action "removeFriend" friend}}>X</button></li>
+               <li>{{friend.firstName}}
+                   {{friend.lastName}}
+
+                   {{#if isEditing}}
+                   {{else}}
+                   <button class="remove-friend" {{action "removeFriend" friend}}>X</button>
+                   {{/if}}
+               </li>
 
                {{/each}}
+               <!-- ember-cli-typeahead -->
+               {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend disabled=isEditing}}
            </ul>
 
-        <!-- ember-cli-typeahead -->
-        {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend}}
+
 
       <div>
 

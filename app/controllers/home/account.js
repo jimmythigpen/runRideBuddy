@@ -8,9 +8,11 @@ export default Ember.Controller.extend({
       return ajax({
         url:  "https://api.parse.com/1/users/" + data.id,
         type: "PUT",
-        data: JSON.stringify({firstName: data.firstName, lastName: data.lastName, password: data.password}),
+        data: JSON.stringify({firstName: data.firstName, lastName: data.lastName, password: data.password, username: data.username, email: data.username}),
         contentType: 'application/json'
-      });
+      }).then(function(){
+        this.transitionToRoute('home.index');
+      }.bind(this));
     }
   }
 });

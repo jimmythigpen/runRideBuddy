@@ -1,9 +1,11 @@
 <header>
 
-<div class="header-welcome-container">
-  <div class="account-image-container"><img class="account-image" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/10888650_10152885593816351_7473078620863621011_n.jpg?oh=6f9188f62b49d2cd3c617d4c7fc09006&oe=557FC65A&__gda__=1438098063_ed9cfe2a858c17032d7b68f3ac94919b" /></div>
-  <div class="header-welcome">Hello, {{session.currentUser.firstName}}!</div>
-</div>
+  <div class="header-welcome-container">
+    {{#link-to 'home'}}
+    <div class="account-image-container"><img class="account-image" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/10888650_10152885593816351_7473078620863621011_n.jpg?oh=6f9188f62b49d2cd3c617d4c7fc09006&oe=557FC65A&__gda__=1438098063_ed9cfe2a858c17032d7b68f3ac94919b" /></div>
+    <div class="header-welcome">Hello, {{session.currentUser.firstName}}</div>
+    {{/link-to}}
+  </div>
 
   <div class="header-image">
     {{#link-to 'home'}}
@@ -11,12 +13,12 @@
     {{/link-to}}
   </div>
 
-<div class="header-buttons">
-      {{#link-to 'home.account'}}
-        <i class="fa fa-user"></i>
-      {{/link-to}}
-      <a {{ action 'invalidateSession' }}><i class="fa fa-sign-out"></i></a>
-</div>
+  <div class="header-buttons">
+    {{#link-to 'home.account'}}
+      <i class="fa fa-user"></i>
+    {{/link-to}}
+    <a {{action 'invalidateSession'}}><i class="fa fa-sign-out"></i></a>
+  </div>
 
 </header>
 

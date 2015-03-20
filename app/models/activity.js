@@ -49,6 +49,19 @@ export default Model.extend({
     });
   },
 
+  leave: function(friend) {
+    // this.get('activityFriends').removeObject(friend);
+    return ajax("https://api.parse.com/1/classes/activity/" + this.get('id'), {
+      type: "PUT",
+      data: JSON.stringify({
+        activityFriends: {
+          __op: "RemoveRelation",
+          objects: [this.serializeFriend(friend)]
+        }
+      })
+    });
+  },
+
   toJSON: function(){
     // console.log(this.get('activityDate'));
     var data = this.getProperties('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
