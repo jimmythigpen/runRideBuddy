@@ -46,7 +46,7 @@ export default Ember.TextField.extend({
  didInsertElement: function() {
    this._super();
    this.initializeTypeahead();
-   if (this.get('autofocus') === true) {
+   if (this.get('autofocus') === false) {
      this.$().focus();
    }
  },
@@ -85,7 +85,7 @@ export default Ember.TextField.extend({
  }.property(),
  loadDataset: function(content) {
    var name = this.get('name') || 'default',
-       key = this.get('displayKey') || 'value';
+       key = this.get('displayKey', 'displayKey2') || 'value';
    return {
      name: name,
      displayKey: key,

@@ -12,61 +12,66 @@
       <div class="edit-info">Activity Name</div>
         <div>{{input placeholder="activity name" class="edit-input" value=model.activity.activityName disabled=isEditing}}</div>
       <div class="edit-info">Activity Date</div>
-      <!-- {{log model.activity.activityDate}} -->
         <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activity.activityDate disabled=isEditing}}</div>
       <div class="edit-info">Activity Type</div>
-       <div class="edit-input">
-         <div class="mx-button">
+
+         <div class="type-button">
           {{type-buttons name="typeSelect" selectionBinding="model.activity.activityType" value="Run" id="type1" disabled=isEditing}}
           <label for="type1">Run</label>
          </div>
-        <div class="mx-button">
+        <div class="type-button">
           {{type-buttons name="typeSelect" selectionBinding="model.activity.activityType" value="Ride" id="type2" disabled=isEditing}}
           <label for="type2">Ride</label>
         </div>
+
+       <div class="edit-info">Activity Style</div>
+
+         <div class="type-button">
+         {{type-buttons name="styleSelect" selectionBinding="model.activity.activityStyle" value="One-Way" id="style1" disabled=isEditing}}
+         <label for="style1">One-Way</label>
        </div>
+       <div class="type-button">
+         {{type-buttons name="styleSelect" selectionBinding="model.activity.activityStyle" value="Round-Trip" id="style2" disabled=isEditing}}
+         <label for="style2">Round-Trip</label>
+       </div>
+
       <div class="edit-info">Activity Way-Points</div>
-       <div class="edit-input">Start: {{view "select" content=startMarker value=model.activity.activityStart disabled=isEditing}} Finish: {{view "select" content=finishMarker value=model.activity.activityFinish disabled=isEditing}}</div>
+       Start: {{view "select" content=startMarker value=model.activity.activityStart disabled=isEditing}} Finish: {{view "select" content=finishMarker value=model.activity.activityFinish disabled=isEditing}}
 
         <div class="edit-info">Activity Notes</div>
-         <div>{{textarea placeholder="activity notes" class="edit-input" value=model.activity.activityNotes disabled=isEditing}}</div>
+         <div>{{textarea placeholder="Create notes for your activity" class="edit-input" value=model.activity.activityNotes disabled=isEditing}}</div>
 
          <div class="edit-info">Activity Friends</div>
-           <ul class="edit-input">
+           <ul>
+               {{#each friend in activityFriends}}
+               <li>
+                 {{friend.firstName}}
+                 {{friend.lastName}}
 
-               {{#each friend in model.activity.activityFriends}}
-
-               <li>{{friend.firstName}}
-                   {{friend.lastName}}
-
-                   {{#if isEditing}}
-                   {{else}}
-                   <button class="remove-friend" {{action "removeFriend" friend}}>X</button>
-                   {{/if}}
+                 {{#if isEditing}}
+                 {{else}}
+                 <button class="remove-friend" {{action "removeFriend" friend}}>X</button>
+                 {{/if}}
                </li>
-
                {{/each}}
                <!-- ember-cli-typeahead -->
-               {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend disabled=isEditing}}
+               {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="fullName" targetAction="addFriend" selection=selectedFriend disabled=isEditing}}
            </ul>
-
-
-
-      <div>
+      <div class="activity-button-container">
 
       {{#if owner}}
 
-      <button {{action "edit"}}>Edit</button>
-      <button {{action "save"}}>Save</button>
-      <button {{action "delete"}}>Delete</button>
+      <button class="activity-button" {{action "edit"}}>Edit</button>
+      <button class="activity-button" {{action "save"}}>Save</button>
+      <button class="activity-button" {{action "delete"}}>Delete</button>
 
       {{#link-to 'home'}}
-        <button>Cancel</button>
+        <button class="activity-cancel-button">Cancel</button>
       {{/link-to}}
 
       {{else}}
 
-      <button {{action "leave"}}>Leave Activity</button>
+      <button class="submit-button" {{action "leave"}}>Leave Activity</button>
 
       {{/if}}
 

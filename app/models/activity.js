@@ -24,6 +24,7 @@ export default Model.extend({
   },
 
   addFriend: function(friend) {
+    // console.log(this.get('activity'));
     this.get('activityFriends').pushObject(friend);
     return ajax("https://api.parse.com/1/classes/activity/" + this.get('id'), {
       type: "PUT",

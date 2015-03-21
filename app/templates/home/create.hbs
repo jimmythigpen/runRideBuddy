@@ -6,48 +6,48 @@
   <form>
     <div>
       <div>Name your activity</div>
-      {{input placeholder="Name Activity" value=model.activity.activityName}}
+    {{input placeholder="Name Activity" class="edit-input" value=model.activity.activityName}}
     </div>
     <div>
       <div>Select Date and Time</div>
-      {{input type="datetime-local" value=model.activity.activityDate step="900"}}
+      <div class="edit-input">{{input type="datetime-local" value=model.activity.activityDate step="900" class="date-input"}}</div>
     </div>
       <div>
         <div>Select Type</div>
-        <div class="mx-button">
+        <div class="type-button">
             {{type-buttons name="typeSelect" selectionBinding="model.activity.activityType" value="Run" id="type1"}}
             <label for="type1">Run</label>
         </div>
-        <div class="mx-button">
+        <div class="type-button">
             {{type-buttons name="typeSelect" selectionBinding="model.activity.activityType" value="Ride" id="type2"}}
             <label for="type2">Ride</label>
         </div>
       </div>
       <div>
         <div>Select Style</div>
-        <div class="mx-button">
+        <div class="type-button">
           {{type-buttons name="styleSelect" selectionBinding="model.activity.activityStyle" value="One-Way" id="style1"}}
           <label for="style1">One-Way</label>
         </div>
-        <div class="mx-button">
+        <div class="type-button">
           {{type-buttons name="styleSelect" selectionBinding="model.activity.activityStyle" value="Round-Trip" id="style2"}}
           <label for="style2">Round-Trip</label>
         </div>
       </div>
       <div>Select Way-Points</div>
-        <div>
-        {{view "select" content=startMarker value=model.activity.activityStart prompt="Select Start Mile Marker"}}
+        <div class="marker-select">
+        {{view "select" content=startMarker value=model.activity.activityStart prompt="Select Start Marker" class="marker"}}
         </div>
-        <div>
-        {{view "select" content=finishMarker value=model.activity.activityFinish prompt="Select Finish Mile Marker"}}
+        <div class="marker-select">
+        {{view "select" content=finishMarker value=model.activity.activityFinish prompt="Select Finish Marker" class="marker"}}
         </div>
         <div>Notes</div>
-        <div>{{textarea placeholder="Notes" value=model.activity.activityNotes}}</div>
+        <div>{{textarea placeholder="Create notes for your activity" value=model.activity.activityNotes}}</div>
         <div>
           <div>Friends</div>
           <ul class="edit-input">
               {{#each friend in model.activity.activityFriends}}
-              <li>{{friend.firstName}} {{friend.lastName}} <button class="remove-friend" {{action "removeFriend" friend}}>X</button></li>
+              <li>{{friend.firstName}} {{friend.lastName}} <button class="remove-friend" {{action "removeFriend" friend}}>Remove</button></li>
               {{/each}}
           </ul>
 
