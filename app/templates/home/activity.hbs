@@ -55,7 +55,7 @@
                </li>
                {{/each}}
                <!-- ember-cli-typeahead -->
-               {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="fullName" targetAction="addFriend" selection=selectedFriend disabled=isEditing}}
+               {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend disabled=isEditing}}
            </ul>
       <div class="activity-button-container">
 

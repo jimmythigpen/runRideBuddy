@@ -85,7 +85,7 @@ export default Ember.TextField.extend({
  }.property(),
  loadDataset: function(content) {
    var name = this.get('name') || 'default',
-       key = this.get('displayKey', 'displayKey2') || 'value';
+       key = this.get('displayKey') || 'value';
    return {
      name: name,
      displayKey: key,

@@ -6,6 +6,20 @@ export default Ember.Controller.extend({
 
   actions: {
     saveNew: function(){
+      var newActivity = this.get('model.activity');
+      var distance;
+
+      if (newActivity.activityStart < newActivity.activityFinish) {
+        distance = newActivity.activityFinish - newActivity.activityStart;
+      } else {
+        distance = newActivity.activityStart - newActivity.activityFinish;
+      }
+
+      if (newActivity.activityStyle === "Round-Trip") {
+        distance = distance * 2;
+      }
+
+      this.set('model.activity.distance', distance);
       this.get('model.activity').save();
     },
 

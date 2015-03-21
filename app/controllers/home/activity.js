@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
     // console.log(this.get('model'));
     var ownerId = this.get('model.activity.activityOwner.objectId');
     return this.get('model.activity.activityFriends').rejectBy('objectId', ownerId);
-  }.property('model.activity.activityFriends'),
+  }.property('model.activity.activityFriends.@each'),
 
   actions: {
     edit: function(){

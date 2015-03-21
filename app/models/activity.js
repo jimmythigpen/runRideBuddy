@@ -24,7 +24,6 @@ export default Model.extend({
   },
 
   addFriend: function(friend) {
-    // console.log(this.get('activity'));
     this.get('activityFriends').pushObject(friend);
     return ajax("https://api.parse.com/1/classes/activity/" + this.get('id'), {
       type: "PUT",
@@ -51,7 +50,6 @@ export default Model.extend({
   },
 
   leave: function(friend) {
-    // this.get('activityFriends').removeObject(friend);
     return ajax("https://api.parse.com/1/classes/activity/" + this.get('id'), {
       type: "PUT",
       data: JSON.stringify({
@@ -64,7 +62,6 @@ export default Model.extend({
   },
 
   toJSON: function(){
-    // console.log(this.get('activityDate'));
     var data = this.getProperties('activityName', 'activityType', 'activityStyle', 'activityStart', 'activityFinish', 'activityNotes');
     var ownerId = this.get('activityOwner.id');
     if(ownerId) {
@@ -78,6 +75,7 @@ export default Model.extend({
       __type: "Date",
       iso: (new Date(this.get('activityDate'))).toISOString()
     });
+
     return data;
   }
 });

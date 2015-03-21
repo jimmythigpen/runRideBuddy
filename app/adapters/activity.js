@@ -2,6 +2,7 @@ import ajax from 'ic-ajax';
 import Ember from 'ember';
 
 export default Ember.Object.extend({
+
   find: function(name, id){
     var activity;
     return ajax("https://api.parse.com/1/classes/activity/" + id + "?include=activityOwner").then(function(response){
@@ -18,6 +19,7 @@ export default Ember.Object.extend({
   },
 
     findAll: function(){
+    // console.log(this.get('session.currentUser.id'));
     var currentUser = this.get('session.currentUser.id');
     //  return ajax("https://api.parse.com/1/classes/activity" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '},"key":"joinedActivities"}}}' + "&include=activityOwner").then(function(response){
       return ajax("https://api.parse.com/1/classes/activity" + '?where={"activityFriends":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '}}').then(function(response){
@@ -29,8 +31,13 @@ export default Ember.Object.extend({
            if (activity.activityStart < activity.activityFinish) {
              activity.distance = activity.activityFinish - activity.activityStart;
            } else {
-             activity.distance = activity.activityStart -activity.activityFinish;
+             activity.distance = activity.activityStart - activity.activityFinish;
            }
+
+           if (activity.activityStyle === "Round-Trip") {
+             activity.distance = activity.distance * 2;
+           }
+
            return activity;
          });
        });

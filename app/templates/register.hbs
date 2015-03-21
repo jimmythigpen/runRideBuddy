@@ -5,6 +5,8 @@
 
 {{input placeholder="first name" class="submit-input" value=firstName}}
 {{input placeholder="last name" class="submit-input" value=lastName}}
+{{input type="file" placeholder="profile picture"}}
+<input id="uploadbutton" type="button" value="Upload Picture"{{action 'imageUpload'}}/>
 {{input placeholder="email" class="submit-input" type='email' value=username}}
 {{input placeholder="password" class="submit-input" type='password' value=password}}
 
