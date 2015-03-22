@@ -6,11 +6,9 @@
     <div class="container-title"><span>You are the Owner</span><h5>feel free to make changes</h5></div>
     {{else}}
     <div class="container-title"><span>Activity Details</span></div>
-
-
-      <div class="edit-info">Activity Owner</div>
-        <div>{{input placeholder="activity owner" class="edit-input" value=model.activity.activityOwner.firstName disabled=true}}</div>
-        {{/if}}
+      <div class="edit-info">Owner</div>
+      <div>{{input placeholder="activity owner" class="edit-input" value=model.activity.activityOwner.firstName disabled=true}}</div>
+    {{/if}}
       <div class="edit-info">{{model.activity.activityType}} Name</div>
         <div>{{input placeholder="activity name" class="edit-input" value=model.activity.activityName disabled=editable}}</div>
       <div class="edit-info">Date</div>
@@ -63,17 +61,18 @@
       <!-- {{log owner}} -->
       {{#if owner}}
 
-      <button class="activity-button" {{action "edit"}}>Edit</button>
       <button class="activity-button" {{action "save"}}>Save</button>
       <button class="activity-button" {{action "delete"}}>Delete</button>
-
       {{#link-to 'home'}}
-        <button class="activity-cancel-button">Cancel</button>
+        <button class="activity-button">Cancel</button>
       {{/link-to}}
+
+      <button class="activity-complete-button" {{action "complete"}}>Mark as Complete</button>
 
       {{else}}
 
-      <button class="submit-button" {{action "leave"}}>Leave Activity</button>
+      <button class="activity-button" {{action "leave"}}>Leave Activity</button>
+      <button class="activity-button" {{action "complete"}}>Mark Complete</button>
 
       {{/if}}
 

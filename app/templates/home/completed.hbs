@@ -2,7 +2,7 @@
 
 <div class="left-container">
   <div class="button-container">
-    <div class="container-title">Runs & Rides</div>
+    <div class="container-title">Your Completed Activities</div>
   <div class="user-activity-container">
         <ul class="activity-list">
           {{#each activity in model}}
@@ -18,11 +18,8 @@
           {{/each}}
         </ul>
     </div>
-    {{#link-to 'home.completed'}}
-      <button class="create-new-button">View Completed</button>
-    {{/link-to}}
-    {{#link-to 'home.create'}}
-      <button class="create-new-button">Create New</button>
+    {{#link-to 'home.index'}}
+      <button class="create-new-button">Return to Home</button>
     {{/link-to}}
     </div>
   </div>

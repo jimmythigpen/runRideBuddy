@@ -10,6 +10,7 @@ Router.map(function() {
     this.route('account');
     this.route('activity', {path: '/activity/:activity_id'});
     this.route('create');
+    this.route('completed');
   });
 
   this.route('login');
