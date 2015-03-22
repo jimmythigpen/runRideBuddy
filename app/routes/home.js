@@ -3,6 +3,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function(){
+    // console.log(this.get('session.currentUser'));
     return this.get('session.currentUser');
   }
 });

@@ -4,9 +4,10 @@ export default Ember.Controller.extend({
   startMarker: [23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5, 35, 35.5, 36, 36.5],
   finishMarker: [23, 23.5, 24, 24.5, 25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5, 30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5, 35, 35.5, 36, 36.5],
 
-  owner: function(){
-    return (this.session.isAuthenticated && this.get('session.currentUser.id') === this.get('model.activity.activityOwner.objectId'));
-  }.property(),
+  // owner: function(){
+  //   // console.log('owner controller computed property');
+  //   // return (this.session.isAuthenticated && this.get('session.currentUser.id') !== this.get('model.activity.activityOwner.objectId'));
+  // }.property(),
 
   activityFriends: function(){
     // console.log(this.get('model'));
@@ -15,9 +16,9 @@ export default Ember.Controller.extend({
   }.property('model.activity.activityFriends.@each'),
 
   actions: {
-    edit: function(){
-      this.set('isEditing', false);
-    },
+    // edit: function(){
+    //   this.set('isEditing', false);
+    // },
 
     save: function() {
       this.get('model.activity').save().then(function(){
@@ -49,7 +50,5 @@ export default Ember.Controller.extend({
       }.bind(this));
     },
   },
-
-  isEditing: true,
 
 });

@@ -46,7 +46,7 @@ export default Ember.TextField.extend({
  didInsertElement: function() {
    this._super();
    this.initializeTypeahead();
-   if (this.get('autofocus') === false) {
+   if (this.get('autofocus') === true) {
      this.$().focus();
    }
  },

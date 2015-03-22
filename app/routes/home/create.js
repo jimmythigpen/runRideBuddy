@@ -10,4 +10,12 @@ export default Ember.Route.extend({
       users: this.store.findAll('user'),
      });
    },
+
+  actions: {
+
+   didTransition: function() {
+     // console.log(this.get(p));
+     this.controller.set('model.activity.activityType', 'activity');
+    }
+   },
  });
