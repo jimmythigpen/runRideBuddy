@@ -82,6 +82,7 @@ header {
   display: inline-block;
   vertical-align: top;
   font-size: 20px;
+  margin-top: 4px;
 }
 
 .header-image {
@@ -434,6 +435,7 @@ iframe {
 
 .edit-info {
   font-weight: 500;
+  margin: .3em auto;
 }
 
 .edit-input {
@@ -472,15 +474,31 @@ iframe {
 }
 
 .typeahead {
+  border-radius: 3px;
   width: 100%;
   border: 2px solid transparent;
   font-size: 14px;
   z-index: 1;
+  transition: border-color 0.15s ease-in-out 0s;
+
+  &:focus {
+    border-color: $secondary;
+  }
 }
 
 .tt-dropdown-menu {
   font-size: 14px;
   width: 100%;
+}
+
+.text-area {
+  border: 2px solid transparent;
+  transition: border-color 0.15s ease-in-out 0s;
+  padding: 1px;
+
+  &:focus {
+    border-color: $secondary;
+  }
 }
 
 select {
@@ -514,8 +532,31 @@ textarea {
 }
 
 .remove-friend {
+  color: #fafafa;
+  cursor: pointer;
+  height: 14px;
+  padding: 2px;
+  width: 50px;
+  background: #8bc34a;
+  border: none;
+  border-radius: 3px;
   font-size: 12px;
-  padding: 1px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
+  background: #9ed05c;
+  vertical-align: top;
+
+  &:hover {
+    background: $secondary;
+  }
+
+  &:active {
+    background: $secondary-dark;
+  }
+}
+
+.create-info {
+  margin: .3em auto;
 }
 
 //
@@ -546,6 +587,7 @@ textarea {
     background-color: $white;
     background-position: 0 -15px;
     transition: background-position 0.15s linear;
+    transition: border-color 0.15s ease-in-out 0s;
 }
 
 .type-button input:checked + label {

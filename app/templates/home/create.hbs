@@ -5,15 +5,15 @@
     <div class="container-title">Create New</div>
   <form>
     <div>
-      <div>Name your {{model.activity.activityType}}</div>
+    <div>Name your {{model.activity.activityType}}</div>
     {{input placeholder="create a name" class="edit-input" value=model.activity.activityName required=true}}
     </div>
     <div>
-      <div>Select Date and Time</div>
+      <div class="create-info">Select Date and Time</div>
       <div class="edit-input">{{input type="datetime-local" value=model.activity.activityDate step="900" class="date-input"}}</div>
     </div>
       <div>
-        <div>Select Type</div>
+        <div  class="create-info">Select Type</div>
         <div class="type-button">
             {{type-buttons name="typeSelect" selectionBinding="model.activity.activityType" value="Run" id="type1"}}
             <label for="type1">Run</label>
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div>
-        <div>Select Style</div>
+        <div class="create-info">Select Style</div>
         <div class="type-button">
           {{type-buttons name="styleSelect" selectionBinding="model.activity.activityStyle" value="One-Way" id="style1"}}
           <label for="style1">One-Way</label>
@@ -34,17 +34,17 @@
           <label for="style2">Round-Trip</label>
         </div>
       </div>
-      <div>Select Way-Points</div>
+      <div class="create-info">Select Way-Points</div>
         <div class="marker-select">
         {{view "select" content=startMarker value=model.activity.activityStart prompt="Select Start Marker" class="marker"}}
         </div>
         <div class="marker-select">
         {{view "select" content=finishMarker value=model.activity.activityFinish prompt="Select Finish Marker" class="marker"}}
         </div>
-        <div>Notes</div>
-        <div>{{textarea placeholder="enter a short description" value=model.activity.activityNotes}}</div>
+        <div class="create-info">Notes</div>
+        <div>{{textarea placeholder="enter a short description" value=model.activity.activityNotes class="text-area"}}</div>
         <div>
-          <div>Friends</div>
+          <div class="create-info">Friends</div>
           <ul class="edit-input">
               {{#each friend in activityFriends}}
               <li>{{friend.firstName}} {{friend.lastName}} <button class="remove-friend" {{action "removeFriend" friend}}>Remove</button></li>
@@ -52,7 +52,7 @@
           </ul>
 
           <!-- ember-cli-typeahead -->
-          {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" selection=selectedFriend}}
+          {{type-ahead class="typeahead" placeholder="Search Users" name="users" highlight=true content=model.users displayKey="firstName" selection=selectedFriend}}
         </div>
 
         <div class="activity-button-container">

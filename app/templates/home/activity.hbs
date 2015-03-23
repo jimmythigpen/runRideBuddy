@@ -41,16 +41,17 @@
        {{else}}
 
        <div class="edit-info">Overview</div>
-       This is a {{model.activity.activityStyle}} {{model.activity.activityType}}, it starts at mile {{model.activity.activityStart}} {{summary}} {{model.activity.activityFinish}}.
+       <span class="edit-input">This is a {{model.activity.activityStyle}} {{model.activity.activityType}}, it starts at mile {{model.activity.activityStart}} {{summary}} {{model.activity.activityFinish}}.</span>
 
-       <div>Total Distance: {{distance}} {{log miles}}</div>
+       <div class="edit-info">Total Distance</div>
+       <span class="edit-input">{{distance}} {{log miles}}</span>
 
        {{/if}}
         <div class="edit-info">Notes</div>
          <div>{{textarea placeholder="Create notes for your activity" class="edit-input" value=model.activity.activityNotes disabled=editable}}</div>
 
          <div class="edit-info">Activity Friends</div>
-           <ul>
+           <ul class="edit-input">
                {{#each friend in activityFriends}}
                <li>
                  {{friend.firstName}}
