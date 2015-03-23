@@ -25,6 +25,25 @@ $hint-text: #b6b6b6;
   font-weight: 300;
 }
 
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+}
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
 body {
   background-color: white;
 }
@@ -360,6 +379,28 @@ iframe {
   display: block;
   height: 35px;
   width: 100%;
+  background: $secondary-light;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
+
+  &:hover {
+    background: $secondary;
+  }
+
+  &:active {
+    background: $secondary-dark;
+  }
+}
+
+.index-page-button {
+  margin: 6px auto;
+  color: #fafafa;
+  cursor: pointer;
+  height: 35px;
+  width: 49%;
   background: $secondary-light;
   border: none;
   border-radius: 3px;

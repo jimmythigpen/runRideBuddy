@@ -16,11 +16,14 @@ export default Ember.Route.extend({
     // },
 
     didTransition: function() {
+      // console.log(this.get('session.currentUser'));
       this.controller.set('owner',
       this.get('session.currentUser.id') === (this.currentModel.activity.activityOwner.objectId));
 
       this.controller.set('editable',
       this.get('session.currentUser.id') !== (this.currentModel.activity.activityOwner.objectId));
+      
+
    }
   },
 

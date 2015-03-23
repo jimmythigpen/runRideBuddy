@@ -10,6 +10,61 @@ export default Ember.Controller.extend({
     return this.get('model.activity.activityFriends').rejectBy('objectId', ownerId);
   }.property('model.activity.activityFriends.@each'),
 
+  // fullname: function() {
+  //   return this.get('model.users');
+  //   // console.log(users);
+  //   // var fullname;
+  //
+  //   // fullname = users.firstName + users.lastName;
+  //
+  //   // return fullname;
+  //
+  // }.property('model.users.@each'),
+
+
+  summary: function() {
+    var activity = this.get('model.activity');
+    var summary;
+
+    if (activity.activityStyle === "One-Way") {
+      summary = "and ends at mile";
+    } else {
+      summary = "and the turnaround is at mile";
+    }
+
+    return summary;
+  }.property('model.activity'),
+
+  distance: function() {
+    var newActivity = this.get('model.activity');
+    var distance;
+
+    if (newActivity.activityStart < newActivity.activityFinish) {
+      distance = newActivity.activityFinish - newActivity.activityStart;
+    } else {
+      distance = newActivity.activityStart - newActivity.activityFinish;
+    }
+
+    if (newActivity.activityStyle === "Round-Trip") {
+      distance = distance * 2;
+    }
+
+    if (distance > 1) {
+      distance = (distance + " Miles");
+    } else {
+      distance = (distance + " Mile");
+    }
+
+    return distance;
+  }.property('model.activity'),
+
+  // firstName: function() {
+  //   console.log('HELLLO');
+  //   // console.log(this.get('session.currentUser'));
+  //   // console.log(this.get('model.activityOwner'));
+  //   return 'hello';
+  // }.property('model.activityOwner', 'session.currentUser'),
+
   actions: {
     complete: function() {
        var self = this;
@@ -31,6 +86,8 @@ export default Ember.Controller.extend({
          });
        });
     },
+
+
 
     save: function() {
       this.get('model.activity').save().then(function(){

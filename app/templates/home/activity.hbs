@@ -4,17 +4,17 @@
   <div class="user-activity-container-alt">
     {{#if owner}}
     <div class="container-title"><span>You are the Owner</span><h5>feel free to make changes</h5></div>
+    <div class="edit-info">{{model.activity.activityType}} Name</div>
+      <div>{{input placeholder="activity name" class="edit-input" value=model.activity.activityName disabled=editable}}</div>
     {{else}}
-    <div class="container-title"><span>Activity Details</span></div>
+    <div class="container-title"><span>{{model.activity.activityName}}</span></div>
       <div class="edit-info">Owner</div>
       <div>{{input placeholder="activity owner" class="edit-input" value=model.activity.activityOwner.firstName disabled=true}}</div>
-    {{/if}}
-      <div class="edit-info">{{model.activity.activityType}} Name</div>
-        <div>{{input placeholder="activity name" class="edit-input" value=model.activity.activityName disabled=editable}}</div>
+      {{/if}}
       <div class="edit-info">Date</div>
         <div class="edit-input">{{input type="datetime-local" class="date-input" value=model.activity.activityDate disabled=editable}}</div>
+      {{#if owner}}
       <div class="edit-info">Run or Ride?</div>
-
          <div class="type-button">
           {{type-buttons name="typeSelect" selectionBinding="model.activity.activityType" value="Run" id="type1" disabled=editable}}
           <label for="type1">Run</label>
@@ -38,6 +38,14 @@
       <div class="edit-info">Mile Markers</div>
        Start: {{view "select" content=startMarker value=model.activity.activityStart disabled=editable}} Finish: {{view "select" content=finishMarker value=model.activity.activityFinish disabled=editable}}
 
+       {{else}}
+
+       <div class="edit-info">Overview</div>
+       This is a {{model.activity.activityStyle}} {{model.activity.activityType}}, it starts at mile {{model.activity.activityStart}} {{summary}} {{model.activity.activityFinish}}.
+
+       <div>Total Distance: {{distance}} {{log miles}}</div>
+
+       {{/if}}
         <div class="edit-info">Notes</div>
          <div>{{textarea placeholder="Create notes for your activity" class="edit-input" value=model.activity.activityNotes disabled=editable}}</div>
 
@@ -54,9 +62,19 @@
                  {{/if}}
                </li>
                {{/each}}
-               <!-- ember-cli-typeahead -->
-               {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend disabled=editable}}
+
            </ul>
+
+           {{#if owner}}
+           <!-- ember-cli-typeahead -->
+           {{type-ahead class="typeahead" placeholder="Search Users" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend disabled=editable}}
+           {{else}}
+           {{/if}}
+
+
+           <!-- {{log fullname}} -->
+
+
       <div class="activity-button-container">
       <!-- {{log owner}} -->
       {{#if owner}}
@@ -71,8 +89,8 @@
 
       {{else}}
 
-      <button class="activity-button" {{action "leave"}}>Leave Activity</button>
-      <button class="activity-button" {{action "complete"}}>Mark Complete</button>
+      <button class="index-page-button" {{action "leave"}}>Leave Activity</button>
+      <button class="index-page-button" {{action "complete"}}>Mark Complete</button>
 
       {{/if}}
 
