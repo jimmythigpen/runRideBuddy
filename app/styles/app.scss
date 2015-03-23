@@ -559,6 +559,38 @@ textarea {
   margin: .3em auto;
 }
 
+.pic-upload {
+    /* position: absolute; */
+    opacity: .01;
+    -moz-opacity: 0;
+    top: 440px;
+    position: absolute;
+    top: 440px;
+}
+
+.pic-upload input {
+  color: black;
+  opacity: 1;
+  width: 310px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.pic-upload-button {
+  margin: 20px auto;
+  color: #fafafa;
+  cursor: pointer;
+  display: block;
+  height: 35px;
+  width: 100%;
+  background: #9ed05c;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
+}
+
 //
 // CSS For Radio Buttons
 //

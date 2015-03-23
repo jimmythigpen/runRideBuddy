@@ -2,7 +2,7 @@
 
   <div class="header-welcome-container">
     {{#link-to 'home'}}
-    <div class="account-image-container"><img class="account-image" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p100x100/10888650_10152885593816351_7473078620863621011_n.jpg?oh=6f9188f62b49d2cd3c617d4c7fc09006&oe=557FC65A&__gda__=1438098063_ed9cfe2a858c17032d7b68f3ac94919b" /></div>
+    <div class="account-image-container"><img class="account-image" {{bind-attr src=session.currentUser.profilePic.url}}/></div>
     <div class="header-welcome">Hello, {{session.currentUser.firstName}}</div>
     {{/link-to}}
   </div>
