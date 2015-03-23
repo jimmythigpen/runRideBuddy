@@ -30,7 +30,6 @@ export default Ember.Controller.extend({
   }
 });
 
-
 //       imageUpload: function() {
 //         var image = this.get('image');
 //         console.log(this.get('image'));

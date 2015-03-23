@@ -5,7 +5,6 @@ export default Ember.Route.extend({
   model: function(){
     var currentUser = this.get('session.currentUser.id');
       return ajax("https://api.parse.com/1/classes/activity" + '?where={"$relatedTo":{"object":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '},"key":"completedActivities"}}}' + "&include=activityOwner").then(function(response){
-      // return ajax("https://api.parse.com/1/classes/activity" + '?where={"activityFriends":{"__type":"Pointer","className":"_User","objectId":'+ '\"' + currentUser + '\"' + '}}').then(function(response){
          return response.results.map(function(activity) {
            activity.id = activity.objectId;
            delete activity.objectId;

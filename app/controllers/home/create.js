@@ -28,12 +28,6 @@ export default Ember.Controller.extend({
       this.get('model.activity').save();
     },
 
-    addFriend: function() {
-      var activity = this.get('model.activity');
-      var friend = this.get('selectedFriend');
-      activity.activityFriends.pushObject(friend);
-    },
-
     removeFriend: function(friend) {
       var activity = this.get('model.activity');
       activity.activityFriends.removeObject(friend);
@@ -48,4 +42,5 @@ export default Ember.Controller.extend({
       this.set('selectedFriend', null);
     }
   }.observes('selectedFriend')
+  
 });

@@ -62,21 +62,16 @@
                  {{/if}}
                </li>
                {{/each}}
-
            </ul>
 
            {{#if owner}}
            <!-- ember-cli-typeahead -->
-           {{type-ahead class="typeahead" placeholder="Search Users" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend disabled=editable}}
+           {{type-ahead class="typeahead" placeholder="Search Users" name="users" highlight=true content=model.users displayKey="firstName" selection=selectedFriend disabled=editable}}
            {{else}}
            {{/if}}
 
-
-           <!-- {{log fullname}} -->
-
-
       <div class="activity-button-container">
-      <!-- {{log owner}} -->
+
       {{#if owner}}
 
       <button class="activity-button" {{action "save"}}>Save</button>

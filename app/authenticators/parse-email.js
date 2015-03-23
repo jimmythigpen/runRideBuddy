@@ -41,17 +41,4 @@ export default Base.extend({
     return Ember.RSVP.resolve();
   },
 
-  // _setupHeaders: Ember.immediateObserver('sessionToken', function(){
-  //   var token = this.get('sessionToken');
-  //   Ember.$.ajaxSetup({
-  //     headers: {
-  //       'X-Parse-Session-Token': token
-  //     }
-  //   });
-  // }),
-
-  // setCurrentUser: Ember.immediateObserver('currentUser', function() {
-  //   return this.set('currentUser');
-  //
-  // })
 });

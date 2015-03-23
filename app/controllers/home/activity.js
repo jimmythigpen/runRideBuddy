@@ -10,18 +10,6 @@ export default Ember.Controller.extend({
     return this.get('model.activity.activityFriends').rejectBy('objectId', ownerId);
   }.property('model.activity.activityFriends.@each'),
 
-  // fullname: function() {
-  //   return this.get('model.users');
-  //   // console.log(users);
-  //   // var fullname;
-  //
-  //   // fullname = users.firstName + users.lastName;
-  //
-  //   // return fullname;
-  //
-  // }.property('model.users.@each'),
-
-
   summary: function() {
     var activity = this.get('model.activity');
     var summary;
@@ -58,12 +46,14 @@ export default Ember.Controller.extend({
     return distance;
   }.property('model.activity'),
 
-  // firstName: function() {
-  //   console.log('HELLLO');
-  //   // console.log(this.get('session.currentUser'));
-  //   // console.log(this.get('model.activityOwner'));
-  //   return 'hello';
-  // }.property('model.activityOwner', 'session.currentUser'),
+    friendSelected: function(){
+      var activity = this.get('model.activity');
+      var friend = this.get('selectedFriend');
+      if(friend) {
+        activity.addFriend(friend);
+        this.set('selectedFriend', null);
+      }
+    }.observes('selectedFriend'),
 
   actions: {
     complete: function() {
@@ -87,18 +77,10 @@ export default Ember.Controller.extend({
        });
     },
 
-
-
     save: function() {
       this.get('model.activity').save().then(function(){
         this.transitionToRoute('home.index');
       }.bind(this));
-    },
-
-    addFriend: function() {
-      var activity = this.get('model.activity');
-      var friend = this.get('selectedFriend');
-      activity.addFriend(friend);
     },
 
     removeFriend: function(friend) {

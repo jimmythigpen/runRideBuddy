@@ -10,21 +10,13 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    // willTransition: function() {
-    //   // console.log(this.get(p));
-    //   this.controller.set('createLabel', 'activity');
-    // },
-
     didTransition: function() {
-      // console.log(this.get('session.currentUser'));
       this.controller.set('owner',
       this.get('session.currentUser.id') === (this.currentModel.activity.activityOwner.objectId));
 
       this.controller.set('editable',
       this.get('session.currentUser.id') !== (this.currentModel.activity.activityOwner.objectId));
-      
-
-   }
+    }
   },
 
 });
