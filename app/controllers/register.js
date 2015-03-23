@@ -4,6 +4,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     register: function(){
+      var self = this;
       var data = this.getProperties('firstName', 'lastName', 'username', 'password');
       data.email = data.username;
       ajax({
@@ -16,35 +17,31 @@ export default Ember.Controller.extend({
           sessionToken: response.sessionToken
         });
       }.bind(this)).then(function(){
-        console.log('upload function!');
+        var image = self.get('image');
+        // console.log(image);
+        ajax({
+          url:  "https://api.parse.com/1/profileImages/" + 'profilePic',
+          type: "POST",
+          data: image,
+          contentType: 'application/json'
+        });
       });
-  },
-}
-
+    },
+  }
 });
 
-// return ajax({
-//   url:  "https://api.parse.com/1/classes/activity",
-//   type: "POST",
-//   data: JSON.stringify(record.toJSON()),
-//   contentType: 'application/json'
-// }).then(function(response){
-//   record.id = response.objectId;
-//   record.createdAt = response.createdAt;
-//   return ajax({
-//     url:  "h
-//
-// // image: function(){
-// //   var data = this.getProperties('firstName', 'lastName', 'username', 'password');
-// //   data.email = data.username;
-// //   ajax({
-// //     url:  "https://api.parse.com/1/users",
 
-//     type: "POST",
-//     data: JSON.stringify(data),
-//     contentType: 'application/json'
-//   }).then(function(response){
-//     this.session.authenticate('authenticator:parse-email', {
-//       sessionToken: response.sessionToken
-//     });
-//   }.bind(this));
+//       imageUpload: function() {
+//         var image = this.get('image');
+//         console.log(this.get('image'));
+//         ajax({
+//           url:  "https://api.parse.com/1/profileImages/" + 'profilePic',
+//           type: "POST",
+//           data: image,
+//           contentType: 'application/json'
+//         });
+//       }
+//
+// }
+//
+// });

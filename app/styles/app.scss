@@ -1,7 +1,7 @@
 @import 'bower_components/bourbon/app/assets/stylesheets/bourbon';
 @import 'bower_components/neat/app/assets/stylesheets/neat';
 
-$font-stack: 'Roboto', sans-serif;
+$font-stack: 'Comic Sans', sans-serif;
 
 $white: #fafafa;
 
@@ -23,6 +23,7 @@ $hint-text: #b6b6b6;
   color: $primary-text;
   font-family: $font-stack;
   font-weight: 300;
+  /* opacity: 0.9; */
 }
 
 #bg {
@@ -209,6 +210,9 @@ iframe {
 
   &:hover {
     border: 2px solid $secondary;
+    &:a button {
+      background: $secondary;
+    }
   }
 
   &:active {
@@ -233,6 +237,7 @@ iframe {
   padding: 20px;
   background-color: $primary;
   box-shadow: 0 10px 20px rgba(0, 0, 0, .19), 0 6px 6px rgba(0, 0, 0, .23);
+  opacity: 0.97;
 }
 
 .submit-label {

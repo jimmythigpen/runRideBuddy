@@ -13,6 +13,23 @@ export default Ember.Controller.extend({
       }).then(function(){
         this.transitionToRoute('home.index');
       }.bind(this));
-    }
+    },
+
+
+  imageUpload: function() {
+    var data = this.get('model');
+    var image = this.get('image');
+    console.log(this.get('image'));
+    ajax({
+      url:  "https://api.parse.com/1/users/" + data.id,
+      type: "POST",
+      // files: JSON.stringify({profilePic: image}),
+      data: JSON.stringify({profilePic: image}),
+      contentType: 'image/jpeg'
+    });
   }
+
+}
+
+
 });

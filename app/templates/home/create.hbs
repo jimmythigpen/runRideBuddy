@@ -6,7 +6,7 @@
   <form>
     <div>
       <div>Name your {{model.activity.activityType}}</div>
-    {{input placeholder="create a name" class="edit-input" value=model.activity.activityName}}
+    {{input placeholder="create a name" class="edit-input" value=model.activity.activityName required=true}}
     </div>
     <div>
       <div>Select Date and Time</div>
@@ -46,21 +46,23 @@
         <div>
           <div>Friends</div>
           <ul class="edit-input">
-              {{#each friend in model.activity.activityFriends}}
+              {{#each friend in activityFriends}}
               <li>{{friend.firstName}} {{friend.lastName}} <button class="remove-friend" {{action "removeFriend" friend}}>Remove</button></li>
               {{/each}}
           </ul>
 
           <!-- ember-cli-typeahead -->
-          {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" targetAction="addFriend" selection=selectedFriend}}
+          {{type-ahead class="typeahead" placeholder="Search Names" name="users" highlight=true content=model.users displayKey="firstName" selection=selectedFriend}}
         </div>
 
-        {{#link-to 'home'}}
-          <button {{action "saveNew"}}>Save</button>
-        {{/link-to}}
-        {{#link-to 'home'}}
-          <button>Cancel</button>
-        {{/link-to}}
+        <div class="activity-button-container">
+          {{#link-to 'home'}}
+            <button class="index-page-button" {{action "saveNew"}}>Save</button>
+          {{/link-to}}
+          {{#link-to 'home'}}
+            <button class="index-page-button" >Cancel</button>
+          {{/link-to}}
+        </div>
 
   </form>
 

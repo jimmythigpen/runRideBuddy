@@ -1,9 +1,15 @@
+<div id="#bg">
+  <img src="/assets/images/bg.jpg" id="bg" alt="">
+</div>
+
 <form class='submit-container'{{action 'updateAccount' on='submit'}}>
 
 <div class="submit-label">update account</div>
 
   {{input placeholder="update first name" class="submit-input" value=model.firstName}}
   {{input placeholder="update last name" class="submit-input" value=model.lastName}}
+  {{input type="file"  value=image placeholder="profile picture"}}
+  <input id="uploadbutton" type="button" value="Upload Picture"{{action 'imageUpload'}}/>
   {{input placeholder="update email" class="submit-input" value=model.username}}
   {{input placeholder="update password" class="submit-input" value=model.password type="password"}}
   <button class="submit-button" type="submit">UPDATE ACCOUNT</button>

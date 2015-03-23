@@ -5,6 +5,7 @@ import Session from "simple-auth/session";
 export function initialize(container, application) {
 
   application.inject('adapter', 'session', 'simple-auth-session:main');
+  application.inject('authenticator:parse-email', 'store', 'store:main');
 
   Session.reopen({
 

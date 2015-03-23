@@ -25,10 +25,10 @@ export default Ember.TextField.extend({
  _typeahead: null,
  selection: null,
 
- focusOut: function(){
-   this.sendAction('targetAction');
- },
-
+ // focusOut: function(){
+ //   this.sendAction('targetAction');
+ // },
+ //
  // focusIn: function(){
  //   this.sendAction('targetAction', "focus-in");
  // },
