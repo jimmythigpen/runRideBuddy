@@ -2,7 +2,7 @@
 import Model from 'ember-magic-man/model';
 
 export default Model.extend({
-  // fullName: function(){
-  //   return firstName + " " + lastName;
-  // }.property('firstName', 'lastName')
+  fullName: function(){
+    return this.get('firstName') + " " + this.get('lastName');
+  }.property('firstName', 'lastName')
 });
