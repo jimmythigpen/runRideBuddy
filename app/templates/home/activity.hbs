@@ -72,7 +72,7 @@
 
            {{#if owner}}
            <!-- ember-cli-typeahead -->
-           {{type-ahead class="typeahead" placeholder="Search Users" name="users" highlight=true content=model.users displayKey="firstName" selection=selectedFriend disabled=editable}}
+           {{type-ahead class="typeahead" placeholder="Search Users" name="users" highlight=true content=model.users displayKey="fullName" selection=selectedFriend disabled=editable}}
            {{else}}
            {{/if}}
 
