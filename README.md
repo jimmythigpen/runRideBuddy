@@ -18,3 +18,5 @@
 * MapBox
 * Google Earth Pro
 * City of Greenville (GIS) geographic information system data
+
+![alt tag](https://raw.github.com/jimmythigpen/runRideBuddy/master/public/assets/images/logo.svg)
