@@ -1,7 +1,7 @@
 @import 'bower_components/bourbon/app/assets/stylesheets/bourbon';
 @import 'bower_components/neat/app/assets/stylesheets/neat';
 
-$font-stack: 'Comic Sans', sans-serif;
+$font-stack: 'Roboto', sans-serif;
 
 $white: #fafafa;
 
@@ -92,13 +92,14 @@ header {
 }
 
 .logo {
-  /* transition: all 0.15s ease-in-out 0s; */
-  height: 100%
-}
+   transition: all 0.15s ease-in-out 0s;
+   height: 100%;
+   fill: blue;
 
-/* .logo:hover {
-  color: #8BC34A;
-} */
+   &:hover {
+     fill: red;
+   }  
+}
 
 .header-buttons {
   @include span-columns(4, block-collapse);
