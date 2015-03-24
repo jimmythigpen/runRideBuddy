@@ -26,7 +26,8 @@ export default Ember.TextField.extend({
  selection: null,
 
  // focusOut: function(){
- //   this.sendAction('targetAction');
+ //   this.sendAction();
+ //
  // },
  //
  // focusIn: function(){

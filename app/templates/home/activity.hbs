@@ -58,9 +58,11 @@
          <div class="edit-info">Activity Friends</div>
            <ul class="edit-input">
                {{#each friend in activityFriends}}
-               <li>
+               <li class="added-friend">
+                 <img class="search-image" {{bind-attr src=friend.profilePic.url}}/>
                  {{friend.firstName}}
                  {{friend.lastName}}
+
 
                  {{#if editable}}
                  {{else}}

@@ -512,6 +512,16 @@ iframe {
   width: 100%;
 }
 
+.search-image {
+    border-radius: 3px;
+    height: 20px;
+    vertical-align: top;
+}
+
+.added-friend {
+  margin-top: 1px;
+}
+
 /* .text-area {
   border: 2px solid transparent;
   transition: border-color 0.15s ease-in-out 0s;
@@ -553,7 +563,7 @@ textarea {
   font-size: 14px;
   /* border: none; */
   border-radius: 3px;
-  
+
   &:focus {
     border-color: $secondary;
   }
@@ -573,6 +583,7 @@ textarea {
   background: #9ed05c;
   vertical-align: top;
   margin-top: 1px;
+  float: right;
 
   &:hover {
     background: $secondary;
