@@ -56,6 +56,9 @@
   </div>
 
   <div class="header-buttons">
+
+    <a {{action "openModal"}}><i class="fa fa-question"></i></a>
+
     {{#link-to 'home.account'}}
       <i class="fa fa-user"></i>
     {{/link-to}}
@@ -63,5 +66,8 @@
   </div>
 
 </header>
+
+{{#about-modal enabled=false id="modal-about"}}
+{{/about-modal}}
 
 {{outlet}}

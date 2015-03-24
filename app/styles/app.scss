@@ -23,7 +23,6 @@ $hint-text: #b6b6b6;
   color: $primary-text;
   font-family: $font-stack;
   font-weight: 300;
-  /* opacity: 0.9; */
 }
 
 #bg {
@@ -82,7 +81,7 @@ header {
   display: inline-block;
   vertical-align: top;
   font-size: 20px;
-  margin-top: 4px;
+  /* margin-top: 4px; */
 }
 
 .header-image {
@@ -92,13 +91,13 @@ header {
 }
 
 .logo {
-    transition: all 0.15s ease-in-out 0s;
-    height: 100%;
-    stroke-linejoin: round;
+  transition: all 0.15s ease-in-out 0s;
+  height: 100%;
+  stroke-linejoin: round;
 
-    &:hover {
-      stroke: $secondary;
-    }
+  &:hover {
+    stroke: $secondary;
+  }
 }
 
 /* .logo path:hover {
@@ -274,26 +273,26 @@ iframe {
 }
 
 .submit-button {
-    margin: 20px auto;
-    color: $white;
-    cursor: pointer;
-    display: block;
-    height: 35px;
-    width: 100%;
-    background: $secondary-light;
-    border: none;
-    border-radius: 3px;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.15s ease-in-out 0s;
+  margin: 20px auto;
+  color: $white;
+  cursor: pointer;
+  display: block;
+  height: 35px;
+  width: 100%;
+  background: $secondary-light;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
 
-    &:hover {
-      background: $secondary;
-    }
+  &:hover {
+    background: $secondary;
+  }
 
-    &:active {
-      background: $secondary-dark;
-    }
+  &:active {
+    background: $secondary-dark;
+  }
 }
 
 .activity-button-container {
@@ -301,26 +300,26 @@ iframe {
 }
 
 .activity-button {
-    margin-top: 10px;
-    color: $white;
-    cursor: pointer;
-    display: inline-block;
-    height: 35px;
-    width: 32.3%;
-    background: $secondary-light;
-    border: none;
-    border-radius: 3px;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.15s ease-in-out 0s;
+  margin-top: 10px;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  height: 35px;
+  width: 32.3%;
+  background: $secondary-light;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.15s ease-in-out 0s;
 
-    &:hover {
-      background: $secondary;
-    }
+  &:hover {
+    background: $secondary;
+  }
 
-    &:active {
-      background: $secondary-dark;
-    }
+  &:active {
+    background: $secondary-dark;
+  }
 }
 
 .activity-complete-button {
@@ -446,7 +445,6 @@ iframe {
   }
 }
 
-
 .login-image {
   height: 100px;
   text-align: center;
@@ -514,7 +512,7 @@ iframe {
   width: 100%;
 }
 
-.text-area {
+/* .text-area {
   border: 2px solid transparent;
   transition: border-color 0.15s ease-in-out 0s;
   padding: 1px;
@@ -522,7 +520,7 @@ iframe {
   &:focus {
     border-color: $secondary;
   }
-}
+} */
 
 select {
   font-size: 16px;
@@ -545,22 +543,28 @@ select {
 }
 
 textarea {
+  border: 2px solid transparent;
+  transition: border-color 0.15s ease-in-out 0s;
+  padding: 1px;
   min-width: 100%;
   max-width: 100%;
   outline: none;
   min-height: 50px;
   font-size: 14px;
-  border: none;
+  /* border: none; */
   border-radius: 3px;
+  
+  &:focus {
+    border-color: $secondary;
+  }
 }
 
 .remove-friend {
   color: #fafafa;
   cursor: pointer;
-  height: 14px;
-  padding: 2px;
+  height: 16px;
+  padding: 1px;
   width: 50px;
-  background: #8bc34a;
   border: none;
   border-radius: 3px;
   font-size: 12px;
@@ -568,6 +572,7 @@ textarea {
   transition: all 0.15s ease-in-out 0s;
   background: #9ed05c;
   vertical-align: top;
+  margin-top: 1px;
 
   &:hover {
     background: $secondary;
@@ -583,12 +588,11 @@ textarea {
 }
 
 .pic-upload {
-    /* position: absolute; */
-    opacity: .01;
-    -moz-opacity: 0;
-    top: 440px;
-    position: absolute;
-    top: 440px;
+  opacity: .01;
+  -moz-opacity: 0;
+  top: 440px;
+  position: absolute;
+  top: 440px;
 }
 
 .pic-upload input {
@@ -652,6 +656,87 @@ textarea {
 }
 
 //
+//About Modal
+//
+.modal-shadow {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(20, 20, 20, .3);
+  z-index: 999;
+
+  .modal-frame {
+    max-width: 350px;
+    position: absolute;
+    border-radius: 3px;
+    margin: 10em auto;
+    background-color: $primary;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    z-index: 999;
+    left: 5%;
+    right: 5%;
+
+    .modal-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      padding: 2%;
+      text-align: center;
+      font-weight: 300;
+      font-size: 34px;
+      color: $primary-text;
+      font-family: $font-stack;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+
+  .modal-body {
+    margin-top: 150px;
+    padding: 5px;
+    text-align: center;
+
+    ul {
+      list-style: none;
+    }
+  }
+ }
+}
+
+.modal-text {
+  color: $secondary-text;
+}
+
+.exit-modal {
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  height: 25px;
+  width: 25px;
+  border: 2px solid #f1eee5;
+  border-radius: 50%;
+  outline: none;
+  color: #f1eee5;
+  background-color: $primary-text;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out 0s;
+
+  &:hover {
+    background-color: $secondary;
+    border: 2px solid #252525;
+  }
+
+  &:active {
+    background-color: $secondary-dark;
+  }
+}
+
+//
 // Media Queries
 //
 @media screen and (max-width: 800px) {
@@ -669,5 +754,4 @@ textarea {
     padding-left: 10px;
     margin-bottom: 10px;
   }
-
 }
