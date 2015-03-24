@@ -92,14 +92,22 @@ header {
 }
 
 .logo {
-   transition: all 0.15s ease-in-out 0s;
-   height: 100%;
-   fill: blue;
+    transition: all 0.15s ease-in-out 0s;
+    height: 100%;
+    stroke-linejoin: round;
 
-   &:hover {
-     fill: red;
-   }  
+    &:hover {
+      stroke: $secondary;
+    }
 }
+
+/* .logo path:hover {
+    fill: $secondary;
+} */
+/*
+.logo:hover > path {
+   fill: $secondary;
+} */
 
 .header-buttons {
   @include span-columns(4, block-collapse);
@@ -202,6 +210,19 @@ iframe {
   padding: 1px;
 }
 
+.completed-activity-list-item {
+  list-style: none;
+  border-radius: 3px;
+  border: 2px solid $secondary-light;
+  margin-bottom: 5px;
+  padding: 2px;
+  position: relative;
+
+  &:hover {
+    border: 2px solid $secondary;
+  }
+}
+
 .activity-list-item {
   list-style: none;
   border-radius: 3px;
@@ -212,15 +233,17 @@ iframe {
 
   &:hover {
     border: 2px solid $secondary;
-    &:a button {
-      background: $secondary;
-    }
   }
 
   &:active {
     border: 2px solid $secondary-dark;
   }
 }
+
+/* .activity-list-itemt:hover > a .details-button {
+    background: $secondary-dark;
+    color: red;
+} */
 
 .activity-name {
   font-weight: 500;
@@ -359,7 +382,6 @@ iframe {
   cursor: pointer;
   height: 20px;
   width: 50px;
-  background: #8bc34a;
   border: none;
   border-radius: 3px 0px 0px 0px;
   font-size: 14px;
@@ -370,12 +392,12 @@ iframe {
   right: 0px;
   background:$secondary-light;
 
-  &:hover {
-    background: $secondary;
-  }
+&:hover {
+  background: $secondary;
+}
 
-  &:active {
-    background: $secondary-dark;
+&:active {
+  background: $secondary-dark;
   }
 }
 
