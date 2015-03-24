@@ -19,4 +19,4 @@
 * Google Earth Pro
 * City of Greenville (GIS) geographic information system data
 
-![alt tag](https://raw.github.com/jimmythigpen/runRideBuddy/master/public/assets/images/logo.svg)
+![alt tag](https://raw.githubusercontent.com/jimmythigpen/runRideBuddy/master/public/assets/images/logo.svg)
