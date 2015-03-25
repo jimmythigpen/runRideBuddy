@@ -1,6 +1,8 @@
 # Trail
 
-## A social application geared towards running and cycling
+![alt tag](https://rawgit.com/jimmythigpen/runRideBuddy/master/public/assets/images/logo.svg)
+
+## Connecting people so they can enjoy the outdoors together.
 
 ###Technologies used:
 
@@ -19,5 +21,3 @@
 * MapBox
 * Google Earth Pro
 * City of Greenville (GIS) geographic information system data
-
-![alt tag](https://rawgit.com/jimmythigpen/runRideBuddy/master/public/assets/images/logo.svg)
