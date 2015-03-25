@@ -6,10 +6,14 @@
   <form>
     <div>
     <div>Name your {{model.activity.activityType}}</div>
+
     {{input placeholder="create a name" class="edit-input" value=model.activity.activityName required=true}}
     </div>
     <div>
       <div class="create-info">Select Date and Time</div>
+      <!-- {{log activityDate}} -->
+      <!-- 2015-03-30T19:00:00.000 -->
+      <!-- 2015-03-25T09:26:01-04: -->
       <div class="edit-input">{{input type="datetime-local" value=model.activity.activityDate step="900" class="date-input"}}</div>
     </div>
       <div>

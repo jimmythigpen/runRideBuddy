@@ -14,8 +14,12 @@ export default Ember.Route.extend({
   actions: {
 
    didTransition: function() {
-     // console.log(this.get(p));
      this.controller.set('model.activity.activityType', 'activity');
+    // var date = new Date().toISOString();
+    // console.log(this.get('model.activity'));
+    // date = date.substring(0, date.length - 1);
+
+    //  this.controllet.set('model.activity.activityDate', '2015-03-30T19:00:00.000');
     }
    },
  });

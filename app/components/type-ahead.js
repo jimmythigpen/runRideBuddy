@@ -21,12 +21,16 @@ export default Ember.TextField.extend({
  highlight: false,
  hint: true,
  minLength: 1,
- autofocus: false,
+ autofocus: true,
  _typeahead: null,
  selection: null,
 
  // focusOut: function(){
- //   this.sendAction();
+ //  //  this.sendAction();
+ //  var input = Ember.$('.tt-input');
+ //  console.log(input[0]);
+ //
+ //  input[0].prop("value", "Type your answer here");
  //
  // },
  //

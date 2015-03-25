@@ -9,6 +9,14 @@ export default Ember.Controller.extend({
     return this.get('model.activity.activityFriends').rejectBy('id', ownerId);
   }.property('model.activity.activityFriends.@each'),
 
+  // activityDate: function(){
+  //
+  //   var date = new Date().toISOString();
+  //   date = date.substring(0, date.length - 8);
+  //   return date;
+  //
+  // }.property('model.activity.activityDate'),
+
   actions: {
     saveNew: function(){
       var newActivity = this.get('model.activity');
