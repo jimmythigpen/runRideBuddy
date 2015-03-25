@@ -7,6 +7,7 @@
 * Parse API
 * HTML
 * CSS
+* SASS
 * Ember
 * Javascript
 * Bourbon
@@ -19,4 +20,4 @@
 * Google Earth Pro
 * City of Greenville (GIS) geographic information system data
 
-![alt tag](https://raw.githubusercontent.com/jimmythigpen/runRideBuddy/master/public/assets/images/logo.svg)
+![alt tag](https://rawgit.com/jimmythigpen/runRideBuddy/master/public/assets/images/logo.svg)
