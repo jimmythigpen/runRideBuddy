@@ -65,7 +65,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.baseURL = '/runRideBuddy';
-    ENV.locationType = 'none';
+    ENV.locationType = 'hash';
   }
 
   return ENV;
