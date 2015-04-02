@@ -229,20 +229,24 @@ iframe {
   margin-bottom: 5px;
   padding: 2px;
   position: relative;
+  transition: all 0.15s ease-in-out 0s;
 
   &:hover {
     border: 2px solid $secondary;
+
+    a button {
+      background: $secondary;
+    }
   }
 
   &:active {
     border: 2px solid $secondary-dark;
+
+    a button {
+      background: $secondary-dark;
+    }
   }
 }
-
-/* .activity-list-itemt:hover > a .details-button {
-    background: $secondary-dark;
-    color: red;
-} */
 
 .activity-name {
   font-weight: 500;
