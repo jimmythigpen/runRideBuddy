@@ -2,7 +2,11 @@
 
   <div class="header-welcome-container">
     {{#link-to 'home'}}
+    {{#if session.currentUser.profilePic.url}}
     <div class="account-image-container"><img class="account-image" {{bind-attr src=session.currentUser.profilePic.url}}/></div>
+    {{else}}
+    <div class="account-image-container"><img class="account-image" src="https://app.nimia.com/static/img/default_profile.png"/></div>
+    {{/if}}
     <div class="header-welcome">Hello, {{session.currentUser.firstName}}</div>
     {{/link-to}}
   </div>
